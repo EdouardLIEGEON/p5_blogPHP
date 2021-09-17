@@ -43,6 +43,25 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: #fff;
 }
+.title_admin{
+  font-family: lazer;
+  font-size: 20px;
+}
+.btn_admin{
+  font-family: lazer;
+  font-size: 15px;
+  color: #2c75ff;
+  padding: 10px 25px;
+  margin: 0 15px;
+  background-color: #fff;
+  border: solid 2px #f00020;
+  border-radius: 2%;
+}
+.btn_admin:hover{
+  background-color: #f00020;
+  border: solid 2px #fff;
+  color: #fff;
+}
 .btn-projects{
   border: solid 2px #fff;
   border-radius: 2px;
@@ -11362,15 +11381,15 @@ p {
   color: #fff;
   font-weight: 800;
 }
+#mainNav .navbar-nav .nav-item .nav-link:hover{
+  border-bottom: solid 2px #ffff;
+}
 #mainNav .navbar-nav .nav-item.active .nav-link {
   color: #e6a756;
 }
 @media (min-width: 992px) {
   #mainNav .navbar-nav .nav-item .nav-link {
     font-size: 0.9rem;
-  }
-  #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: rgba(255, 255, 255, 0.4);
   }
   #mainNav .navbar-nav .nav-item.active .nav-link:hover {
     color: #e6a756;

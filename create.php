@@ -6,7 +6,7 @@
     <body>
     <header>
         <h2 class="section-heading mb-0">
-                                Se connecter
+                                Créer un post
                             </h2><br>
         </header>
 
