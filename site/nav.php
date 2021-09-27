@@ -6,7 +6,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Edouard LIEGEON - Développeur PHP/Symfony</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/img/logoEd.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -32,7 +32,9 @@
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php">Accueil</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="projects.php">Mes  posts</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="contact.php">Contact</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="loggin.php">Se connecter / s'enregistrer</a></li>
+                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="login.php">Se connecter</a></li>
+                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="register.php">S'enregistrer</a></li>
+                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="admin.php">Admin</a></li>
                     </ul>
                 </div>
             </div>

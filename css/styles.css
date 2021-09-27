@@ -91,7 +91,7 @@ body {
 .titresingle{
   margin-top: 100px;
   margin-bottom: 100px;
-  font-size: 3rem;
+  font-size: 4rem;
   text-shadow: -3px 3px #fff;
   color:#f00020;
 
@@ -99,6 +99,14 @@ body {
 .mockup{
   width: 1000px;
   height: 500px;
+  margin-top: 50px;
+}
+.titreMockup{
+  font-family: lazer;
+  font-size: 3em;
+  margin: 100px 0;
+  color: #f00020;
+  text-shadow: -3px 3px #fff;
 }
 hr {
   margin: 1rem 0;
@@ -181,7 +189,6 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
 }
-
 abbr[title],
 abbr[data-bs-original-title] {
   -webkit-text-decoration: underline dotted;
@@ -11348,7 +11355,6 @@ p {
 }
 .section-heading .section-heading-upper {
   display: block;
-  font-size: 2rem;
   font-weight: 800;
 }
 .section-heading .section-heading-lower {

@@ -22,9 +22,12 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <h2 class="section-heading mb-4">
-                                <span class="section-heading-lower">Mon blog</span>
+                                <span class="section-heading-lower">Mes projets</span>
                             </h2>
-                            <p class="mb-0">Ici vous pourrez trouver les différents projets que j'ai réaliser dans mes différentes formations mais surtout de Openclassrooms. J'ai pu travailler sur JavaScript, PHP, Twig, Symfony, Sass</p>
+                            <p class="mb-3">Ici vous pourrez trouver les différents projets que j'ai réaliser dans mes différentes formations mais surtout de Openclassrooms. J'ai pu travailler sur JavaScript, PHP, Twig, Symfony, Sass. Je pourrai aussi 
+                                partager ma veille technologique. Vous pouvez donner votre avis et vos impressions sur mes expériences.
+                            </p>
+                            <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="projects.php">Accéder à mes posts</a></div>
                         </div>
                     </div>
                 </div>
