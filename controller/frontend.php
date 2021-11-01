@@ -10,7 +10,6 @@ function listPosts(){
 
     $postManager = new PostManager();
     $posts = $postManager->getPosts();
-
     require('views/frontend/projects.php');
 }
 

@@ -16,15 +16,15 @@ if (isset($_GET['action'])){
     }
     elseif($_GET['action'] == 'addComment'){
         if(isset($_GET['id']) && $_GET['id'] > 0){
-            if(!empty($_POST['auteur']) && !empty($_POST['contenu'])){
-                addComment($_GET['id'], $_POST['auteur'], $_POST['contenu']);
+            if(!empty($_POST['author']) && !empty($_POST['comment'])){
+                addComment($_GET['id'], $_POST['author'], $_POST['comment']);
             }
             else{
                 echo 'Erreur : tous les champs ne sont pas remplis !';
             }
         }
         else{
-            throw new Exception('aucun identifiant de billet envoyé');
+            throw new Exception('aucun identifiant de post envoyé');
         }
     }
     elseif($_GET['action'] == 'contact'){

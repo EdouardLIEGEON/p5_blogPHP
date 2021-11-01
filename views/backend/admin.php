@@ -19,39 +19,40 @@
     </head>
     <body>
     <header>
-        <h2 class="section-heading mb-0">
-                                Administration des projets
-                            </h2><br>
-        </header>
-    <?php
-try{
-$bdd = new PDO('mysql:host=localhost;dbname=blogphp;charset=utf8', 'root', '');
-}
-catch(Exception $e){
-    die('Erreur : '.$e->getMessage());
-}
-$reponse = $bdd->query('SELECT * FROM projets');
-while ($donnees = $reponse->fetch()){
+        <h2 class="section-heading mb-0">Administration des projets</h2><br>
+    </header>
+<?php
+while ($data = $posts->fetch())
+{
 ?>
-        <section class="page-section about-heading">
-            <div class="container">
-                    <div class="row">   
+    <section class="page-section about-heading">
+        <div class="container">
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="<?= 'public/img/'.$data['header']; ?>" alt="Image du post" />
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto ">
                         <div class="bg-faded rounded p-5 m-auto">
-                            <div class="col-xl-5 col-lg-5">
-                                <span class="section-heading-upper title_admin"><?php echo $donnees['titre']; ?>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 offset-8">
-                                <a target="blank" href="alter.php"><button class="btn_admin">MODIFIER</button></a><a target="blank" href="delete.php"><button class="btn_admin">SUPPRIMER</button></a></span>
-                            </div>
+                            <h3 class="section-heading mb-0">
+                                <span class="section-heading-upper"><?= htmlspecialchars($data['title']); ?></span>
+                            </h3><br>
+                            <p class="sousTitre"><?= htmlspecialchars($data['subtitle']); ?></p><br>
+                            <img src="<?= '../public/img/'.$data['technology1']; ?>" alt="technologie utilisée 1">
+                            <img src="<?= '../public/img/'.$data['technology2']; ?>" alt="technologie utilisée 2">
+                            <img src="<?= '../public/img/'.$data['technology3']; ?>" alt="technologie utilisée 3">
+                            <img src="<?= '../public/img/'.$data['technology4']; ?>" alt="technologie utilisée 4"><br><br>
+                            <p>Date de publication : <?= $data['date_fr']; ?></p>
+                            <button class="btn-projects justify-content-center"><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">En savoir plus</a></button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <?php 
-        }
-        $reponse->closeCursor();
-        ?>
-        <?php include("footer.php") ?>
+        </div>
+    </section>
+<?php 
+}
+$posts->closeCursor();
+?>
+<?php require("footer.php") ?>
     </body>
 </html>
+

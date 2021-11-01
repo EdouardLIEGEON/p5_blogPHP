@@ -25,7 +25,7 @@ while ($data = $posts->fetch())
 ?>
     <section class="page-section about-heading">
         <div class="container">
-            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="<?= 'public/img/'.$data['header']; ?>" alt="Image du post" />
+            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="<?= 'public/images/'.$data['header']; ?>" alt="Image du post" />
             <div class="about-heading-content">
                 <div class="row">
                     <div class="col-xl-9 col-lg-10 mx-auto ">
@@ -33,13 +33,13 @@ while ($data = $posts->fetch())
                             <h3 class="section-heading mb-0">
                                 <span class="section-heading-upper"><?= htmlspecialchars($data['title']); ?></span>
                             </h3><br>
-                            <p class="sousTitre"><?= htmlspecialchars($data['subtitle']); ?></p><br>
-                            <img src="<?= '../public/img/'.$data['technology1']; ?>" alt="technologie utilisée 1">
-                            <img src="<?= '../public/img/'.$data['technology2']; ?>" alt="technologie utilisée 2">
-                            <img src="<?= '../public/img/'.$data['technology3']; ?>" alt="technologie utilisée 3">
-                            <img src="<?= '../public/img/'.$data['technology4']; ?>" alt="technologie utilisée 4"><br><br>
-                            <p>Date de publication : <?= $data['date_fr']; ?></p>
-                            <button class="btn-projects justify-content-center"><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">En savoir plus</a></button>
+                            <p class="sousTitre"><?= htmlspecialchars($data['subTitle']); ?></p><br>
+                            <img src="<?= 'public/images/'.$data['technology1']; ?>" alt="technologie utilisée 1">
+                            <img src="<?= 'public/images/'.$data['technology2']; ?>" alt="technologie utilisée 2">
+                            <img src="<?= 'public/images/'.$data['technology3']; ?>" alt="technologie utilisée 3">
+                            <img src="<?= 'public/images/'.$data['technology4']; ?>" alt="technologie utilisée 4"><br><br>
+                            <p>Date de publication : <?= $data['date']; ?></p>
+                            <button class="btn-projects justify-content-center"><a href="index.php?action=post&amp;id=<?= $data['id'] ?>" target="blank">En savoir plus</a></button>
                         </div>
                     </div>
                 </div>
@@ -53,3 +53,5 @@ $posts->closeCursor();
 <?php require("footer.php") ?>
     </body>
 </html>
+
+

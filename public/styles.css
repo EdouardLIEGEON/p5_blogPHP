@@ -96,10 +96,16 @@ body {
   color:#f00020;
 
 }
+em{
+  padding: 20px 0;
+}
+#mockup{
+  margin: 0 150px;
+}
 .mockup{
   width: 1000px;
   height: 500px;
-  margin-top: 50px;
+  margin: 100px 300px;
 }
 .titreMockup{
   font-family: lazer;
@@ -121,6 +127,13 @@ hr:not([size]) {
 }
 .logoEd{
   padding: 0 200px;
+}
+.news{
+  margin: 50px 150px;
+}
+img .header{
+width: 1000px;
+height: 500px;
 }
 
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
@@ -188,6 +201,7 @@ h6, .h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  font-size: 18px;
 }
 input, textarea{
   background: none;
