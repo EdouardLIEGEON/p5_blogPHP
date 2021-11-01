@@ -100,12 +100,12 @@ em{
   padding: 20px 0;
 }
 #mockup{
-  margin: 0 150px;
+  margin: 100px 450px;
 }
 .mockup{
   width: 1000px;
   height: 500px;
-  margin: 100px 300px;
+  margin-top: 50px;
 }
 .titreMockup{
   font-family: lazer;
