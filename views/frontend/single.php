@@ -39,19 +39,34 @@
                 <div class="col-xl-9 col-lg-10 mx-auto ">
                     <div class="bg-faded rounded p-5 m-auto">
                         <h3>Commentaires</h3>
-                        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-                            <div>
-                                <label for="author">Auteur</label><br />
-                                <input type="text" id="author" name="author" />
+                        <div class=row>
+                            <div class="col-md-6">
+                                <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+                                    <div>
+                                        <label for="author">Auteur</label><br />
+                                        <input type="text" id="author" name="author" />
+                                    </div><br>
+                                    <div>
+                                        <label for="comment">Commentaire</label><br />
+                                        <textarea id="comment" name="comment"></textarea>
+                                    </div>
+                                    <div>
+                                        <input type="submit" class="btn-form"/>
+                                    </div>
+                                </form>
                             </div>
-                            <div>
-                                <label for="comment">Commentaire</label><br />
-                                <textarea id="comment" name="comment"></textarea>
+                            <div class="col-md-6">
+                                <?php
+                                while ($comment = $comments->fetch())
+                                {
+                                ?>
+                                <h4><strong><?= htmlspecialchars($comment['author']) ?></h4></strong><span class="little_p">le <?= $comment['date'] ?></span>
+                                <p><?= nl2br(htmlspecialchars($comment['content'])) ?></p><br>
+                                <?php
+                                }
+                                ?>
                             </div>
-                            <div>
-                                <input type="submit" class="btn-form"/>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,15 +77,7 @@
         <img class="mockup"src="<?='public/images/' .$post['mockup'] ?>" alt="">
     </section>
 
-        <?php
-        while ($comment = $comments->fetch())
-        {
-        ?>
-            <h4><strong><?= htmlspecialchars($comment['author']) ?></h4></strong><span class="little_p">le <?= $comment['date'] ?></span>
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p><br>
-        <?php
-        }
-        ?>
+        
     </body>
     <?php require("footer.php"); ?>
 </html>

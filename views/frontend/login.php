@@ -30,16 +30,10 @@
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
                                 <form id="form" enctype="multipart/form-data" onsubmit="return validate()" method="post">
-                                    <input type="text" id="name" name="name" placeholder="Pseudo"/><br><br>
-                                    <input type="password" id="email" name="email" placeholder="Mot de passe"/><br><br>
+                                    <input type="text" id="alias" name="alias" placeholder="Pseudo"/><br><br>
+                                    <input type="password" id="password"  placeholder="Mot de passe"/><br><br>
                                     <input class="btn-form" type="submit" name="send" value="Envoyer"/>
                                 <div id="statusMessage"> 
-                                    <?php if (! empty($db_msg)) { ?>
-                                    <p class='<?= $type_db_msg; ?>Message'><?= $db_msg; ?></p>
-                                    <?php } ?>
-                                    <?php if (! empty($mail_msg)) { ?>
-                                    <p class='<?= $type_mail_msg; ?>Message'><?= $mail_msg; ?></p>
-                                    <?php } ?>
                                 </div>
                                 </form>
                             </div>

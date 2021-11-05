@@ -15,44 +15,44 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="public/styles.css" rel="stylesheet" />
     </head>
-       <?php include("views/frontend/nav.php") ?>
-    </head>
-    <body>
-    <header>
-        <h2 class="section-heading mb-0">Administration des projets</h2><br>
-    </header>
+<!DOCTYPE html>
+<?php $title = 'Mes projets'; ?>
+<?php require('views/frontend/nav.php') ?>
+
+<h2>Mes projets de formation</h2>
+
 <?php
+
 while ($data = $posts->fetch())
 {
 ?>
     <section class="page-section about-heading">
-        <div class="container">
-            <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="<?= 'public/img/'.$data['header']; ?>" alt="Image du post" />
-            <div class="about-heading-content">
+        <div class="container admin_projects">
                 <div class="row">
-                    <div class="col-xl-9 col-lg-10 mx-auto ">
-                        <div class="bg-faded rounded p-5 m-auto">
-                            <h3 class="section-heading mb-0">
+                            <h3>
                                 <span class="section-heading-upper"><?= htmlspecialchars($data['title']); ?></span>
                             </h3><br>
-                            <p class="sousTitre"><?= htmlspecialchars($data['subtitle']); ?></p><br>
-                            <img src="<?= '../public/img/'.$data['technology1']; ?>" alt="technologie utilisée 1">
-                            <img src="<?= '../public/img/'.$data['technology2']; ?>" alt="technologie utilisée 2">
-                            <img src="<?= '../public/img/'.$data['technology3']; ?>" alt="technologie utilisée 3">
-                            <img src="<?= '../public/img/'.$data['technology4']; ?>" alt="technologie utilisée 4"><br><br>
-                            <p>Date de publication : <?= $data['date_fr']; ?></p>
-                            <button class="btn-projects justify-content-center"><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">En savoir plus</a></button>
-                        </div>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-3 offset-4">
+                                    <button class="btn-projects justify-content-center"><a target="_blank" href="index.php?action=post&amp;id=<?= $data['id'] ?>" target="blank">Modifier</a></button>
+                                </div>    
+                                <div class="col-md-3 ">
+                                    <button class="btn-delete justify-content-center"><a target="_blank" href="index.php?action=post&amp;id=<?= $data['id'] ?>" target="blank">Supprimer</a></button>
+                                </div>    
+                            </div>
                 </div>
-            </div>
         </div>
     </section>
 <?php 
 }
 $posts->closeCursor();
 ?>
-<?php require("footer.php") ?>
+<button class="btn-create justify-content-center"><a target="_blank" href="index.php?action=post&amp;id=<?= $data['id'] ?>" target="blank">Créer un nouveau projet</a></button>
+
+<footer>
+<?php require("views/frontend/footer.php") ?>
+</footer>
     </body>
 </html>
+
 

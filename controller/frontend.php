@@ -24,11 +24,10 @@ function post(){
     require('views/frontend/single.php');
 }
 
-function addComment($postId, $author, $comment){
+function addComment($postId, $author, $content, $userId){
 
     $commentManager = new CommentManager();
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
-
+    $affectedLines = $commentManager->postComment($postId, $author, $content, $userId);
     if($affectedLines === false){
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
@@ -46,5 +45,7 @@ function register(){
     require('views/frontend/register.php');
 }
 function admin(){
+    $postManager = new PostManager();
+    $posts = $postManager->getPosts();
     require('views/backend/admin.php');
 }

@@ -16,7 +16,7 @@
         <link href="public/styles.css" rel="stylesheet" />
     </head>
 <?php require('nav.php') ?>
-<section class="page-section clearfix">
+<section class="page-section clearfix intro">
             <div class="container">
                 <div class="intro">
                     <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="public/images/code.jpg" alt="Screenshot d'un code" />

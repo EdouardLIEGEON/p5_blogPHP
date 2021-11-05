@@ -31,10 +31,7 @@
                             <div id="box">
                                 <form id="form" enctype="multipart/form-data" onsubmit="return validate()" method="post">
                                     <input type="text" id="name" name="name" placeholder="Pseudo"/><br><br>
-                                    <input type="text" id="email" name="email" placeholder="Email"/><br><br>
                                     <input type="password" id="subject" name="subject" placeholder="Mot de passe"/><br><br>
-                                    <label>Insérez une image de profil</label><br><br>
-                                    <input type="file" id="image" name="profil_photo"><br><br>
                                     <input class="btn-form" type="submit" name="send" value="Envoyer"/>
                                 <div id="statusMessage"> 
                                     <?php if (! empty($db_msg)) { ?>
