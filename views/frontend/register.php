@@ -19,9 +19,7 @@
     </head>
     <body>
     <header>
-        <h2 class="section-heading mb-0">
-                                S'enregister
-                            </h2><br>
+        <h2 class="section-heading mb-0">S'enregister</h2><br>
         </header>
         <section class="page-section cta">
             <div class="container">
@@ -29,24 +27,16 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <form id="form" enctype="multipart/form-data" onsubmit="return validate()" method="post">
+                                <form id="form" action="userManager.php" method="post">
                                     <input type="text" id="name" name="name" placeholder="Pseudo"/><br><br>
-                                    <input type="password" id="subject" name="subject" placeholder="Mot de passe"/><br><br>
+                                    <input type="password" id="password" name="password" placeholder="Mot de passe"/><br><br>
                                     <input class="btn-form" type="submit" name="send" value="Envoyer"/>
-                                <div id="statusMessage"> 
-                                    <?php if (! empty($db_msg)) { ?>
-                                    <p class='<?= $type_db_msg; ?>Message'><?= $db_msg; ?></p>
-                                    <?php } ?>
-                                    <?php if (! empty($mail_msg)) { ?>
-                                    <p class='<?= $type_mail_msg; ?>Message'><?= $mail_msg; ?></p>
-                                    <?php } ?>
-                                </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>                   
+            </div>                 
         </section>
         <footer>
             <?php include("footer.php") ?>

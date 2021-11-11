@@ -35,6 +35,17 @@ function addComment($postId, $author, $content, $userId){
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
+
+function addUser($name, $password){
+    $userManager = new UserManager();
+    $affectedLines2 = $userManager->insertUser($name, $password);
+    if($affectedLInes2 === false){
+        throw new Exception('Impossible d\'ajouter l\'utilisateur');
+    }
+    else{
+        header('Location: index.php?action=register');
+    }
+}
 function contact(){
     require('views/frontend/contact.php');
 }
