@@ -39,6 +39,9 @@ if (isset($_GET['action'])){
     elseif($_GET['action'] == 'admin'){
         admin();
     }
+    elseif($_GET('action') == 'deconnexion'){
+        deleteSession();
+    }
 }
 else{
     home();

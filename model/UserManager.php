@@ -19,15 +19,16 @@ class UserManager extends Manager{
     }
 
     public function getSession(){
+        session_start();
         if($_SESSION != NULL){ 
             $user_name = $_SESSION['name'];
-    
-            echo require('home.php', [
-                'user' => $user_name,
-                'session' => $_SESSION
-            ]);
-        }else{
-            echo require('home.php');
+            echo $_SESSION['name'];
+            echo require('views/frontend/register.php');
+    }
+    public function deleteSession{
+        if($_GET['action'] == 'deleteSession'){
+            unset($_SESSION['name']);
+            echo require('views/frontend/register.php');
         }
     }
 

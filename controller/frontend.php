@@ -45,6 +45,7 @@ function addUser($name, $password){
     else{
         header('Location: index.php?action=register');
     }
+    require('views/frontend/register.php');
 }
 function contact(){
     require('views/frontend/contact.php');

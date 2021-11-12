@@ -16,6 +16,10 @@
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=listPosts">Mes  posts</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=contact">Contact</a></li>
                         <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=login">Se connecter</a></li>
+                        <?php session_start();
+                         if(isset($_SESSION['name'])){ ?>
+                       <?= '<li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=deconnexion">Se déconnecter</a></li>';}
+                         else echo ""; ?>
                         <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=register">S'enregistrer</a></li>
                         <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=admin">Admin</a></li>
                     </ul>
