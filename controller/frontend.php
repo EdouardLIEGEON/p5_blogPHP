@@ -2,6 +2,8 @@
 
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/UserManager.php');
+
 
 function home(){
     require('views/frontend/home.php');
@@ -36,17 +38,6 @@ function addComment($postId, $author, $content, $userId){
     }
 }
 
-function addUser($name, $password){
-    $userManager = new UserManager();
-    $affectedLines2 = $userManager->insertUser($name, $password);
-    if($affectedLInes2 === false){
-        throw new Exception('Impossible d\'ajouter l\'utilisateur');
-    }
-    else{
-        header('Location: index.php?action=register');
-    }
-    require('views/frontend/register.php');
-}
 function contact(){
     require('views/frontend/contact.php');
 }

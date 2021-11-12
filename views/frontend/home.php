@@ -24,10 +24,10 @@
                         <h2 class="section-heading mb-4">
                             <span class="section-heading-lower">Du commerce au Web</span>
                         </h2>
-                        <p class="mb-3">Après 10 ans passés dans la grande distribution, des problèmes de santé m'ont permit de réfléchir à une reconversion. 
-                            J'ai donc décidé de me lancer dans le web, cherchant un métier où la créativité est de mise. <br>
+                        <p class="mb-3">Après 10 ans passés dans la grande distribution, des problèmes de santé m'ont permis de réfléchir à une reconversion. 
+                            J'ai donc décidé de me lancer dans le web, cherchant un métier où la créativité et la réflexion sont de mise. <br>
                            J'ai ainsi pu réaliser un titre professionnel <b>"Développeur web junior"</b>, mais à la fin de cette formation j'ai su que ce n'était que la première étape 
-                           d'un périple enrichissant où je savais vraiment où aller. Pour moi la polyvalence est importante et même essentielle, j'ai donc décider de rejoindre la formation PHP/Symfony.</p>
+                           d'un périple enrichissant. Pour moi la polyvalence est importante et même essentielle, j'ai donc décider de rejoindre la formation PHP/Symfony chez OpenClassrooms.</p>
                         <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="index.php?action=contact">Me contacter</a></div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                             <p class="mb-3">Ici vous pourrez trouver les différents projets que j'ai réaliser dans mes différentes formations mais surtout de Openclassrooms. J'ai pu travailler sur JavaScript, PHP, Twig, Symfony, Sass. Je pourrai aussi 
                                 partager ma veille technologique. Vous pouvez donner votre avis et vos impressions sur mes expériences.
                             </p>
-                            <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="index.php?action=listPosts">Accéder à mes posts</a></div>
+                            <div class="intro-button mx-auto"><a class="btn btn-primary btn-xl" href="index.php?action=listPosts">Accéder aux projets</a></div>
                         </div>
                     </div>
                 </div>

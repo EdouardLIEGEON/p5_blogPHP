@@ -1,49 +1,67 @@
 <?php
 
-
+session_start();
 require_once("Manager.php");
 
 class UserManager extends Manager{
 
-    public function getUser()
-    {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT * FROM users');
-        return $req;
-    }
-    public function verifUser(){
-        $captureName = $_POST['name'];
-        $capturePassword = $_POST['password'];
-        $req = $db->query("SELECT * FROM users WHERE name = '$captureName' AND password = '$capturePassword'")->fetch();
-        $user_name = $req['name'];
-    }
+    public function createUser(){
 
-    public function getSession(){
-        session_start();
-        if($_SESSION != NULL){ 
-            $user_name = $_SESSION['name'];
-            echo $_SESSION['name'];
-            echo require('views/frontend/register.php');
-    }
-    public function deleteSession{
-        if($_GET['action'] == 'deleteSession'){
-            unset($_SESSION['name']);
-            echo require('views/frontend/register.php');
+        if(isset($_SESSION['id'])){
+            header('Location: views/frontend/home.php');
+            exit;
         }
+
+        if(!empty($_POST)){
+            extract($_POST);
+            $valid = true;
+
+            if(isset($_POST['register'])){
+                $name = htmlentities(trim($name));
+                $password = trim($password);
+
+                if(empty($name)){
+                    $valid = false;
+                    $error_name = "Le nom doit être rempli";
+                }
+                if(empty($password)){
+                    $valid = false;
+                    $error_password = "Le mot de passe doit être rempli";
+                }
+            }
+            if($valid){
+                $password = crypt($password, "$6$rounds=5000$macleapersonnaliseretagardersecret$");
+                $db->insert("INSERT INTO users(name, password) VALUES(?,?)", array($name, $password));
+                header('Location: views/frontend/home.php');
+                exit;
+            }
+        }    
     }
+   /* public function connectUser{
+        if(isset($_SESSION['id'])){
+            header: ('Location: views/frontend/home.php');
+            exit;
+        }
+        if(!empty($_POST)){
+            extract($_POST);
+            $valid = true;
 
-    public function insertUser()
-    {
-        $name = $_POST['name'];
-        $password = $_POST['password'];
-        $User_data = $pdo->query("SELECT name FROM users WHERE name = '$name'")->fetch();
+            if(isset($_POST['login'])){
+                $name = htmlentities(trim($name));
+                $password = trim($password);
 
-    if($User_data == NULL){
-        $db = $this->dbConnect();
-        $users = $db->prepare('INSERT INTO users(name, password) VALUES(?,?, NOW())');
-        $affectedLines2 = $users->execute(array($name, $password));
-
-        return $affectedLines2;
-    }
+                if(empty($name)){
+                    $valid = false;
+                    $error_name = "Renseignez votre pseudo";
+                }
+                if(empty($password)){
+                    $valid = false;
+                    $error_password = "Renseignez votre mot de passe";
+                }
+                $req = $db->query("SELECT* FROM users WHERE name=? AND password=?", array($name, crypt($password, "$6$rounds=5000$macleapersonnaliseretagardersecret$")));
+                $req = $req->fetch();
+            }
+        }
+    }*/
 }
 

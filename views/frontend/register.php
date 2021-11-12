@@ -19,7 +19,7 @@
     </head>
     <body>
     <header>
-        <h2 class="section-heading mb-0">S'enregister</h2><br>
+        <h2 class="section-heading mb-0">S'inscrire</h2><br>
         </header>
         <section class="page-section cta">
             <div class="container">
@@ -27,10 +27,18 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <form id="form" action="userManager.php" method="post">
-                                    <input type="text" id="name" name="name" placeholder="Pseudo"/><br><br>
-                                    <input type="password" id="password" name="password" placeholder="Mot de passe"/><br><br>
-                                    <input class="btn-form" type="submit" name="send" value="Envoyer"/>
+                                <form id="form" method="post">
+                                    <input type="text" id="name" name="name" placeholder="Pseudo *" value="<?php if(isset($name)){ echo $name;}?>" required/><br><br>
+                                    <?php if(isset($error_name)){ ?>
+                                        <?= $error_name ?>
+                                        <?php
+                                    } ?>
+                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" value="<?php if(isset($password)){ echo $password; }?>" required/><br><br>
+                                    <?php if(isset($error_password)){ ?>
+                                        <?= $error_password ?>
+                                        <?php
+                                    } ?>
+                                    <input class="btn-form" type="submit" name="register" value="Envoyer"/>
                                 </form>
                             </div>
                         </div>
