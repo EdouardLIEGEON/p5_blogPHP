@@ -27,18 +27,10 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <form id="form" method="post">
-                                    <input type="text" id="name" name="name" placeholder="Pseudo *" value="<?php if(isset($name)){ echo $name;}?>" required/><br><br>
-                                    <?php if(isset($error_name)){ ?>
-                                        <?= $error_name ?>
-                                        <?php
-                                    } ?>
-                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" value="<?php if(isset($password)){ echo $password; }?>" required/><br><br>
-                                    <?php if(isset($error_password)){ ?>
-                                        <?= $error_password ?>
-                                        <?php
-                                    } ?>
-                                    <input class="btn-form" type="submit" name="register" value="Envoyer"/>
+                                <form id="form" action="backend/submit_form.php" method="post">
+                                    <input type="text" id="name" name="name" placeholder="Pseudo *" required/><br><br>
+                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" required/><br><br>   
+                                    <input class="btn-form" type="submit" value="Envoyer"/>
                                 </form>
                             </div>
                         </div>

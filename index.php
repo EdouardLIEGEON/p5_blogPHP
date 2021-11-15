@@ -3,10 +3,10 @@
 require('controller/frontend.php');
 
 if (isset($_GET['action'])){
-    if ($_GET['action'] == 'listPosts') {
+    if ($_GET['action'] === 'listPosts') {
         listPosts();
     }
-    elseif ($_GET['action'] == 'post'){
+    elseif ($_GET['action'] === 'post'){
         if (isset($_GET['id']) && $_GET['id'] > 0){
             post();
         }
@@ -14,7 +14,7 @@ if (isset($_GET['action'])){
             throw new Exception('aucun identifiant de post envoyé');
         }
     }
-    elseif($_GET['action'] == 'addComment'){
+    elseif($_GET['action'] === 'addComment'){
         if(isset($_GET['id']) && $_GET['id'] > 0){
             if(!empty($_POST['author']) && !empty($_POST['content'])){
                 addComment($_GET['id'], $_POST['author'], $_POST['content']);
@@ -27,19 +27,19 @@ if (isset($_GET['action'])){
             throw new Exception('aucun identifiant de post envoyé');
         }
     }
-    elseif($_GET['action'] == 'contact'){
+    elseif($_GET['action'] === 'contact'){
         contact();
     }
-    elseif($_GET['action'] == 'login'){
+    elseif($_GET['action'] === 'login'){
         login();
     }
-    elseif($_GET['action'] == 'register'){
+    elseif($_GET['action'] === 'register'){
         register();
     }
-    elseif($_GET['action'] == 'admin'){
+    elseif($_GET['action'] === 'admin'){
         admin();
     }
-    elseif($_GET('action') == 'deconnexion'){
+    elseif($_GET('action') === 'deconnexion'){
         deleteSession();
     }
 }
