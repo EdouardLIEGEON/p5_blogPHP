@@ -1,26 +1,33 @@
 <?php
+class User{
+    private $name = $_POST['name'];
+    private $password = $_POST['password'];
 
-$name = $_POST['name'];
-$password = $_POST['password'];
+    public function verif_data($name){
+        if(preg_match("#^[ a-z0-9A-Z\-]+$#", $name)){
+            $this = trim($name);
+            $this = htmlspecialchars($name);
+            $this = stripslashes($name);
+        }
+        else{
+            echo "Format invalide";
+        }
+    
+    }
+    public function verif_password($password){
+        if(preg_match("#^[ a-z0-9A-Z\-]+$#", $password)){
+            $this = trim($password);
+            $this = htmlspecialchars($password);
+            $this = stripslashes($password);
+        }
+        else{ echo "Format invalide";
+        }
+    }
 
-function verif_data($name, $password){
-    $name = trim($name);
-    $name = htmlspecialchars($name);
-    $name = stripslashes($name);
-    $password = trim($password);
-    $password = htmlspecialchars($password);
-    $password = stripslashes($password);
+
+    
 }
 
-
-if (!isset($_POST['name']) || !isset($_POST['password'])){
-    echo "Entrez un Pseudo d'utilisateur et/ou un mot de passe svp";
-    return;
-}
-elseif(isset($_POST['name']) || isset($_POST['password'])){
-    verif_data($name, $password);
-    return preg_match([^A-Za-z0-9]);
-}
 
 
 
