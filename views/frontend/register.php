@@ -28,8 +28,8 @@
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
                                 <form id="form" action="views/backend/submit_form.php" method="post">
-                                    <input type="text" id="name" name="name" placeholder="Pseudo *" required/><br><br>
-                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" required/><br><br>   
+                                    <input type="text" id="name" name="name" placeholder="Pseudo *" value="<?= $_POST['name'] ?? '' ?>" required/><br><br>
+                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" value="<?= $_POST['password'] ?? '' ?>" required/><br><br>   
                                     <input class="btn-form" type="submit" value="Envoyer"/>
                                 </form>
                             </div>
