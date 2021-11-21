@@ -29,11 +29,11 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <form id="form" enctype="multipart/form-data" onsubmit="return validate()" method="post">
-                                    <input type="text" id="alias" name="alias" placeholder="Pseudo"/><br><br>
-                                    <input type="password" id="password"  placeholder="Mot de passe"/><br><br>
-                                    <input class="btn-form" type="submit" name="send" value="Envoyer"/>
-                                <div id="statusMessage"> 
+                            <form id="form" action="controller/frontend.php" method="post">
+                                    <input type="text" id="name" name="name" placeholder="Pseudo *" value="<?= $_POST['name'] ?? '' ?>" required/><br><br>
+                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" value="<?= $_POST['password'] ?? '' ?>" required/><br><br>   
+                                    <input class="btn-form" type="submit" value="Envoyer"/>
+                                </form>
                                 </div>
                                 </form>
                             </div>
