@@ -2,7 +2,7 @@
 
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
-/*require_once('model/UserManager.php'); */
+require_once('model/UserManager.php');
 
 function home(){
     require('views/frontend/home.php');
@@ -57,7 +57,7 @@ function login()
         }
         function verif_password($password)
         {
-            if (preg_match("#^[ a-z0-9A-Z\-]+$#", $password) || trim($password) || htmlspecialchars($password) || stripslashes($password)) {
+            if (preg_match("#^[ a-z0-9A-Z\-]+$#", $password) AND trim($password) AND htmlspecialchars($password) AND stripslashes($password)) {
                 $password->ConnectUser();
             }
             else{ echo "Format invalide";
@@ -81,7 +81,7 @@ function register()
         }
         function verif_password($password)
         {
-            if (preg_match("#^[ a-z0-9A-Z\-]+$#", $password) || trim($password) || htmlspecialchars($password) || stripslashes($password)) {
+            if (preg_match("#^[ a-z0-9A-Z\-]+$#", $password) AND trim($password) AND htmlspecialchars($password) AND stripslashes($password)) {
                 $password->CreateUser();
             }
             else { echo "Format invalide";
