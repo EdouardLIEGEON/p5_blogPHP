@@ -74,7 +74,11 @@
     </section>
     <section id="mockup">
         <h2>Aperçu de l'application</h2>
-        <img class="mockup"src="<?='public/images/' .$post['mockup'] ?>" alt="">
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <img class="mockup"src="<?='public/images/' .$post['mockup'] ?>" alt="">
+            </div>
+        </div>
     </section>
 
         

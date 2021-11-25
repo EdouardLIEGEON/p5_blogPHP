@@ -42,6 +42,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: #fff;
+  overflow-x: hidden;
 }
 .intro{
   padding-bottom: 100px;
@@ -144,7 +145,8 @@ em{
   padding: 20px 0;
 }
 #mockup{
-  margin: 100px 450px;
+  margin: 100px 0px;
+  overflow-x: hidden;
 }
 .mockup{
   width: 1000px;
