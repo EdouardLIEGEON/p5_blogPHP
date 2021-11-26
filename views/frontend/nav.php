@@ -20,7 +20,7 @@
                          if(isset($_SESSION['id'])){ ?>
                             <?= '<li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=deconnexion">Se déconnecter</a></li>';}
                             else echo ""; ?>
-                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=register">S'inscrire</a></li>
+                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=registration">S'inscrire</a></li>
                         <?php
                         if(isset($_SESSION['id']) === '1'){ ?>
                             <?='<li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=admin">Admin</a></li>';}

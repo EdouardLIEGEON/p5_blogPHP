@@ -33,8 +33,8 @@ if (isset($_GET['action'])) {
     else if ($_GET['action'] === 'login') {
         login();
     }
-    else if ($_GET['action'] === 'register') {
-        register();
+    else if ($_GET['action'] === 'registration') {
+        registration();
     }
     else if ($_GET['action'] === 'admin') {
         admin();
