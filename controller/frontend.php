@@ -46,8 +46,6 @@ require('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
     {
         require_once('C:\wamp64\www\p5_blogPHP\submit_form.php');
 
-        verifData();
-        verifPassword();
 
         require('views/frontend/login.php');
 
@@ -57,17 +55,7 @@ require('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
     {
         require_once('C:\wamp64\www\p5_blogPHP\submit_form.php');
 
-			if (empty($Password) || empty($Name))
-			{
-				 echo "Tous les champs n'ont pas été remplis";
-			}
-			else
-			{
-				$Data = array($Name, $Password);
-	
-			}
-
-		}
+			$dataForm->createUser();
 
         require('views/frontend/registration.php');
 

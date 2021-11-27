@@ -3,13 +3,11 @@
 require_once("Manager.php");
 class UserManager extends Manager{
 
-    public function createUser($name, $password)
+    public function createUser()
     {
         $db = $this->dbConnect();
-        $users = $db->prepare('INSERT INTO users(name, password) VALUES(?,?, NOW())');
-        $affectedLines2 = $users->execute(array($name, $password));
-
-        return $affectedLines2;
+        $dataForm = $db->prepare('INSERT INTO users(name, password) VALUES(?,?, NOW())');
+        
     }
     public function connectUser($name, $password)
    {
