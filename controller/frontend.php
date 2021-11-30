@@ -53,9 +53,10 @@ require('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
     function registration()
     {
-        require_once('C:\wamp64\www\p5_blogPHP\submit_form.php');
-
-			$dataForm->createUser();
+        require('C:\wamp64\www\p5_blogPHP\submit_form.php');
+        $retour = mail('edouard.liegeon@gmail.com', "Un nouveau membre s'est enregistré sur le site", $_POST['name'], $_POST['password'],'From : webmaster@monsite.fr');
+        
+		$dataForm->createUser();
 
         require('views/frontend/registration.php');
 
