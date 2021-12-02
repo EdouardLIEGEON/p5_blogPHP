@@ -7,13 +7,34 @@ if (isset($_POST['submit']))
 
 	if (empty($password) || empty($name))
 	{
-		echo "Tous les champs n'ont pas été remplis";
+		$error = "Tous les champs n'ont pas été remplis";
 	}
 	else
 	{
+		header ("location: successRegistration.php");
 		$dataForm = array($name, $password);
 	
 	}
 	
 }
+
+if (isset($_POST['name']) && isset($_POST['password'])) {
+
+	foreach ($users as $user) {
+
+		if (
+			$user['name'] === $_POST['name'] &&
+			$user['password'] === $_POST['password']
+		) {
+
+			$_SESSION['LOGGED_USER'] = $user['name'];
+		} else {
+			$errorMessage = sprintf("Les informations n'existent pas",
+			$_POST['name'],
+			$_POST['password']
+		);
+		}
+	}
+}
+
 

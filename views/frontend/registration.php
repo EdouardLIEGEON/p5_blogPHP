@@ -29,7 +29,7 @@
                             <div id="box">
                                 <form id="form" action="submit_form.php" method="post">
                                     <input type="text" id="name" name="name" placeholder="Pseudo *" value="<?= $_POST['name'] ?? '' ?>" required/><br><br>
-                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" value="<?= $_POST['password'] ?? '' ?>" required/><br><br>   
+                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" value="<?= $_POST['password'] ?? '' ?>" required/><br><br>  
                                     <input class="btn-form" type="submit" value="Envoyer"/>
                                 </form>
                             </div>

@@ -1,3 +1,5 @@
+<?php session_start(); // $_SESSION ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,7 +17,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="public/styles.css" rel="stylesheet" />
     </head>
-<?php require('nav.php') ?>
+<?php include('nav.php') ?>
 <section class="page-section clearfix intro">
             <div class="container">
                 <div class="intro">
@@ -50,6 +52,6 @@
                 </div>
             </div>
         </section>
-        <?php require("footer.php") ?>
+        <?php include("footer.php") ?>
     </body>
 </html>

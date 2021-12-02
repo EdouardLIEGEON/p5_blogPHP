@@ -29,12 +29,24 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                            <form id="form" action="controller/frontend.php" method="post">
+
+                                <?php if(!isset($_SESSION['LOGGED_USER'])): ?>
+
+                            <form id="form" action="submit_form.php" method="post">
+                                <?php if(isset($errorMessage)): ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?= $errorMessage; ?>
+                                    </div>
+                                    <?php endif; ?>
                                     <input type="text" id="name" name="name" placeholder="Pseudo *" value="<?= $_POST['name'] ?? '' ?>" required/><br><br>
                                     <input type="password" id="password" name="password" placeholder="Mot de passe *" value="<?= $_POST['password'] ?? '' ?>" required/><br><br>   
                                     <input class="btn-form" type="submit" value="Envoyer"/>
                                 </form>
-                                </div>
+                                <?php else: ?>
+                                    <div class="alert alter-success" role="alert">
+                                        Bonjour <?= $_SESSION['LOGGED_USER']; ?> !
+                                    </div>
+                                    <?php endif; ?>
                                 </form>
                             </div>
                         </div>
