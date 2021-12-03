@@ -1,8 +1,8 @@
         <header>
                     <h1>
                         Edouard LIEGEON<br>
-                        -<br>
-                        Développeur PHP / Symfony
+                        <img src="public/images/logoEd" width="75px" height="75px" alt="Logo"><br>
+                        Développeur
                     </h1>
         </header>
         <!-- Navigation-->
@@ -22,7 +22,7 @@
                             else echo ""; ?>
                         <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=registration">S'inscrire</a></li>
                         <?php
-                        if(isset($_SESSION['id']) === '1'){ ?>
+                        if(isset($_SESSION['name']) === 'Admin'){ ?>
                             <?='<li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=admin">Admin</a></li>';}
                             else echo ""; ?>
                     </ul>

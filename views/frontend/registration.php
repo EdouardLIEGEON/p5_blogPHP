@@ -19,7 +19,7 @@
     </head>
     <body>
     <header>
-        <h2 class="section-heading mb-0">S'inscrire</h2><br>
+        <h2 class="section-heading mb-0">S"inscrire</h2><br>
         </header>
         <section class="page-section cta">
             <div class="container">

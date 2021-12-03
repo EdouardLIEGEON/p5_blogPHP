@@ -4,6 +4,7 @@ require('C:/wamp64/www/p5_blogPHP/model/PostManager.php');
 require('C:/wamp64/www/p5_blogPHP/model/CommentManager.php');
 require('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
+
     function home(){
         require('views/frontend/home.php');
     }
@@ -44,9 +45,8 @@ require('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
     function login()
     {
-        require_once('C:\wamp64\www\p5_blogPHP\submit_form.php');
-
-
+        
+        
         require('views/frontend/login.php');
 
     }
@@ -56,10 +56,13 @@ require('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
     function registration()
     {
-        require('C:\wamp64\www\p5_blogPHP\submit_form.php');
-        
-        $dataForm = array($name, $password);
+        $name = $_POST['name'];
+        $password = $_POST['password'];
 
+        $userManager = new UserManager();
+        $affectedLines2 = $userManager->createUser($name, $password);
+
+        require('C:\wamp64\www\p5_blogPHP\submit_form.php');
         require('views/frontend/registration.php');
 
     }
