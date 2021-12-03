@@ -32,7 +32,7 @@
 
                                 <?php if(!isset($_SESSION['LOGGED_USER'])): ?>
 
-                            <form id="form" action="submit_form.php" method="post">
+                            <form id="form" action="" method="post">
                                 <?php if(isset($errorMessage)): ?>
                                     <div class="alert alert-danger" role="alert">
                                         <?= $errorMessage; ?>
