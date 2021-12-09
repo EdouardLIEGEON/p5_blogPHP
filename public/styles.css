@@ -160,6 +160,9 @@ em{
   color: #f00020;
   text-shadow: -3px 3px #fff;
 }
+.img_header{
+  margin: 20px 0;
+}
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -249,6 +252,9 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 18px;
+}
+.tech_logos{
+  padding: 20px 0px 30px 0;
 }
 input, textarea{
   background: none;

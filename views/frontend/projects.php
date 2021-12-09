@@ -34,10 +34,13 @@ while ($data = $posts->fetch())
                                 <span class="section-heading-upper"><?= htmlspecialchars($data['title']); ?></span>
                             </h3><br>
                             <p class="sousTitre"><?= htmlspecialchars($data['subTitle']); ?></p><br>
+                            <p class="tech_title">Technologies utilisées : </p>
+                            <div class="tech_logos">
                             <img src="<?= 'public/images/'.$data['technology1']; ?>" alt="technologie utilisée 1">
                             <img src="<?= 'public/images/'.$data['technology2']; ?>" alt="technologie utilisée 2">
                             <img src="<?= 'public/images/'.$data['technology3']; ?>" alt="technologie utilisée 3">
-                            <img src="<?= 'public/images/'.$data['technology4']; ?>" alt="technologie utilisée 4"><br><br>
+                            <img src="<?= 'public/images/'.$data['technology4']; ?>" alt="technologie utilisée 4">
+                            </div>
                             <p>Date de publication : <?= $data['date']; ?></p>
                             <button class="btn-projects justify-content-center"><a href="index.php?action=post&amp;id=<?= $data['id'] ?>" target="blank">En savoir plus</a></button>
                         </div>

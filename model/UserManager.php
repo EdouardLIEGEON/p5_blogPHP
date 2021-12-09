@@ -9,16 +9,15 @@ class UserManager extends Manager{
         $db = $this->dbConnect();
         $user = $db->prepare('INSERT INTO users(name, password, role) VALUES(?,?,contributeur NOW())');
         $affectedLines2 = $user->execute(array($name, $password));
-        
+
         return $affectedLines2;
-        
+
     }
-    public function connectUser($name, $password)
+    public function connectUser()
     {
         $db = $this->dbConnect();
-            $users = $db->prepare('SELECT * FROM users WHERE name = ? AND password = ?');
-            $users->execute(array($name, $password));
-            return $users;
+        $req = $db->query('SELECT * FROM users');
+        return $req;
     }
 }
 

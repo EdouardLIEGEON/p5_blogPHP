@@ -1,7 +1,7 @@
         <header>
                     <h1>
                         Edouard LIEGEON<br>
-                        <img src="public/images/logoEd" width="75px" height="75px" alt="Logo"><br>
+                        <img class="img_header"src="public/images/logoEd" width="75px" height="75px" alt="Logo"><br>
                         Développeur
                     </h1>
         </header>

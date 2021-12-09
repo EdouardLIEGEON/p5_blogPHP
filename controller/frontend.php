@@ -46,13 +46,32 @@ require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
     function login()
     {
-                $name = $_POST['name'];
-                $password = $_POST['password'];
+        
+        if (isset($_POST['submit'])) {
+
+            if (empty($_POST['name']) || empty($_POST['password'])) {
+        
+                $error = "Veuillez remplir tous les champs";
+        
+            }
+            
+            else {
+        
+                $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
+                $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
 
                 $userManager = new UserManager();
                 $users = $userManager->connectUser($name, $password);
-                session_start();
-
+            }
+            if (isset($_POST['name']) &&  isset($_POST['password'])) {
+                if (
+                    $name === $_POST['name'] &&
+                    $password === $_POST['password']
+                ) {
+                   $_SESSION['LOGGED_USER'] = $name;
+                }
+            }
+        }
         require_once('views/frontend/login.php');
 
     }
@@ -71,6 +90,7 @@ require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
                 $error = "Veuillez remplir tous les champs";
         
             }
+            
             else {
         
                 $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
@@ -78,15 +98,19 @@ require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
                 $userManager = new UserManager();
                 $affectedLines2 = $userManager->createUser($name, $password);
+
                 if ($affectedLines2 === false) {
                     throw new Exception("Impossible d\'ajouter l'utilisateur !");
+                    var_dump($name);
+
                 }
 
                 else {
-                    header('Location: index.php?action=registration');
+                    header('Location: index.php');
+                    $success = "Vous êtes bien enregistré ! Vous pouvez vous connecter";
                 }
 
-                $success = "Vous êtes bien enregistré ! Vous pouvez vous connecter";
+                
         
             }
         }

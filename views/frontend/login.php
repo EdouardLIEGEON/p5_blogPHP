@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -43,7 +45,7 @@
                                     <input class="btn-form" type="submit" value="Envoyer"/>
                                 </form>
                                 <?php else: ?>
-                                    <div class="alert alter-success" role="alert">
+                                    <div class="alert alert-success" role="alert">
                                         Bonjour <?= $_SESSION['LOGGED_USER']; ?> !
                                     </div>
                                     <?php endif; ?>
