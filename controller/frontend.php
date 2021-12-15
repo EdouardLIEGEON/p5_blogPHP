@@ -60,8 +60,7 @@ require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
                 $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
                 $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
 
-                $userManager = new UserManager();
-                $users = $userManager->connectUser($name, $password);
+                
             }
             if (isset($_POST['name']) &&  isset($_POST['password'])) {
                 if (
@@ -83,40 +82,25 @@ require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
     function registration()
     {
-        if (isset($_POST['submit'])) {
+      
+        if (isset($_POST['submit'])) 
+        {
+        
+            $name = trim(htmlspecialchars(stripslashes($_POST['name'])));
+            $password = trim(htmlspecialchars(stripslashes($_POST['password'])));
 
-            if (empty($_POST['name']) || empty($_POST['password'])) {
+            $userManager = new UserManager();
+            $affectedLines2 = $userManager->createUser($name, $password);
         
-                $error = "Veuillez remplir tous les champs";
-        
+            if ($affectedLines2 === false) {
+                die('Impossible d\'ajouter l\'utilisateur !');
+
             }
-            
             else {
-        
-                $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
-                $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
-
-                $userManager = new UserManager();
-                $affectedLines2 = $userManager->createUser($name, $password);
-
-                if ($affectedLines2 === false) {
-                    throw new Exception("Impossible d\'ajouter l'utilisateur !");
-                    var_dump($name);
-
-                }
-
-                else {
-                    header('Location: index.php');
-                    $success = "Vous êtes bien enregistré ! Vous pouvez vous connecter";
-                }
-
-                
-        
+                header('Location: index.php?action=home');
             }
         }
-
         require_once('views/frontend/registration.php');
-
     }
 
     function admin()

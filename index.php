@@ -34,14 +34,13 @@ if (isset($_GET['action'])) {
         login();
     }
     else if ($_GET['action'] === 'registration') {
-        registration();
+        registration($_POST);
+        
     }
     else if ($_GET['action'] === 'admin') {
         admin();
     }
-    else if ($_GET('action') === 'deconnexion') {
-        deleteSession();
-    }
+    
 }
 else {
     home();
