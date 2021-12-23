@@ -277,6 +277,11 @@ input::placeholder, textarea::placeholder{
   font-size: 20px;
  
 }
+.label_form{
+  font-size: 20px;
+  padding-bottom: 10px;
+  text-align: start;
+}
 .btn-form{
   font-family: lazer;
   background: #f00020;

@@ -4,19 +4,20 @@ require_once('C:/wamp64/www/p5_blogPHP/model/PostManager.php');
 require_once('C:/wamp64/www/p5_blogPHP/model/CommentManager.php');
 require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
+class Controller{
 
-    function home()
+    public function home()
     {
         require_once('views/frontend/home.php');
     }
-    function listPosts()
+    public function listPosts()
     {
         $postManager = new PostManager();
         $posts = $postManager->getPosts();
         require_once('views/frontend/projects.php');
     }
 
-    function post()
+    public function post()
     {
         $postManager = new PostManager();
         $commentManager = new CommentManager();
@@ -27,10 +28,10 @@ require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
         require_once('views/frontend/single.php');
     }
 
-    function addComment($postId, $author, $content, $userId)
+    public function addComment($postId, $author, $content)
     {
         $commentManager = new CommentManager();
-        $affectedLines = $commentManager->postComment($postId, $author, $content, $userId);
+        $affectedLines = $commentManager->postComment($postId, $author, $content);
         if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');
         }
@@ -39,12 +40,12 @@ require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
         }
     }
 
-    function contact()
+    public function contact()
     {
         require_once('views/frontend/contact.php');
     }
 
-    function login()
+    public function login()
     {
         
         if (isset($_POST['submit'])) {
@@ -75,38 +76,23 @@ require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
     }
 
-    function deconnexion()
+    public function deconnexion()
     {
         session_destroy();
     }
 
-    function registration()
+    public function registration($name, $password)
     {
-      
-        if (isset($_POST['submit'])) 
-        {
-        
-            $name = trim(htmlspecialchars(stripslashes($_POST['name'])));
-            $password = trim(htmlspecialchars(stripslashes($_POST['password'])));
-
-            $userManager = new UserManager();
-            $affectedLines2 = $userManager->createUser($name, $password);
-        
-            if ($affectedLines2 === false) {
-                die('Impossible d\'ajouter l\'utilisateur !');
-
-            }
-            else {
-                header('Location: index.php?action=home');
-            }
-        }
         require_once('views/frontend/registration.php');
+        $userManager = new UserManager();     
+        $affectedLines = $userManager->createUser($name, $password);
     }
 
-    function admin()
+    public function admin()
     {
         $postManager = new PostManager();
         $posts = $postManager->getPosts();
 
         require_once('views/backend/admin.php');
     }
+}
