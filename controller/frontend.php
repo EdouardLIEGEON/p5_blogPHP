@@ -4,7 +4,7 @@ require_once('C:/wamp64/www/p5_blogPHP/model/PostManager.php');
 require_once('C:/wamp64/www/p5_blogPHP/model/CommentManager.php');
 require_once('C:/wamp64/www/p5_blogPHP/model/UserManager.php');
 
-class Controller{
+class Frontend{
 
     public function home()
     {
@@ -84,25 +84,24 @@ class Controller{
     public function registration($name, $password)
     {
         var_dump($name); 
+        require_once('views/frontend/registration.php');
 
-        if (isset($_POST['submit'])) {
+        if (!empty($name) && !empty($password)) {
             
-            $name = htmlspecialchars(trim(stripslashes($_POST['name'])));
-            $password = htmlspecialchars(trim(stripslashes($_POST['password'])));
+            $name = htmlspecialchars(trim(stripslashes($name)));
+            $password = htmlspecialchars(trim(stripslashes($password)));
 
             $userManager = new UserManager();     
-            $affectedLines = $userManager->createUser($name, $password);
+            $affectedLines2 = $userManager->createUser($name, $password);
 
-            if ($affectedLines === false) {
+            if ($affectedLines2 === false) {
             throw new Exception('Impossible d\'ajouter l\'utilisateur !');
             }
 
             else {
             header('Location: index.php?action=registration');
             }
-        }
-        require_once('views/frontend/registration.php');
-        
+        }     
     }
 
     public function admin()

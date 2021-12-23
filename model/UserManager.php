@@ -7,9 +7,9 @@ class UserManager extends Manager{
     {
         $db = $this->dbConnect();
         $users = $db->prepare('INSERT INTO users(name, password) VALUES(?,?, NOW())');
-        $affectedLines = $users->execute(array($name, $password));
+        $affectedLines2 = $users->execute(array($name, $password));
 
-        return $affectedLines;
+        return $affectedLines2;
     }
     
     public function connectUser()

@@ -3,13 +3,13 @@
 require_once('controller/frontend.php');
 
 if (isset($_GET['action'])) {
-    $listPost = new Controller();
+    $listPost = new Frontend();
     if ($_GET['action'] === 'listPosts') {
         $listPost->listPosts();
     }
     
     else if ($_GET['action'] === 'post') {
-        $post = new Controller();
+        $post = new Frontend();
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             $post->post();
         }
@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
     }
 
     else if ($_GET['action'] === 'addComment') {
-        $addComment = new Controller();
+        $addComment = new Frontend();
         if (isset($_GET['id']) && $_GET['id'] > 0) {
             if (!empty($_POST['author']) && !empty($_POST['content'])) {
                 $addComment->addComment($_GET['id'], $_POST['author'], $_POST['content']);
@@ -34,26 +34,26 @@ if (isset($_GET['action'])) {
     }
 
     else if ($_GET['action'] === 'contact') {
-        $contact = new Controller();
+        $contact = new Frontend();
         $contact->contact();
     }
 
     else if ($_GET['action'] === 'login') {
-        $login = new Controller();
+        $login = new Frontend();
         $login->login();
     }
 
     else if ($_GET['action'] === 'registration') {
-        $registration = new Controller();
+        $registration = new Frontend();
         $registration->registration($_POST['name'], $_POST['password']);
         }
 
     else if ($_GET['action'] === 'admin') {
-        $admin = new Controller();
+        $admin = new Frontend();
         $admin->admin();
     }
 }
 else {
-    $home = new Controller();
+    $home = new Frontend();
     $home->home();
 }
