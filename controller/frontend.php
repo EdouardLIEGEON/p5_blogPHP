@@ -83,9 +83,26 @@ class Controller{
 
     public function registration($name, $password)
     {
+        var_dump($name); 
+
+        if (isset($_POST['submit'])) {
+            
+            $name = htmlspecialchars(trim(stripslashes($_POST['name'])));
+            $password = htmlspecialchars(trim(stripslashes($_POST['password'])));
+
+            $userManager = new UserManager();     
+            $affectedLines = $userManager->createUser($name, $password);
+
+            if ($affectedLines === false) {
+            throw new Exception('Impossible d\'ajouter l\'utilisateur !');
+            }
+
+            else {
+            header('Location: index.php?action=registration');
+            }
+        }
         require_once('views/frontend/registration.php');
-        $userManager = new UserManager();     
-        $affectedLines = $userManager->createUser($name, $password);
+        
     }
 
     public function admin()
