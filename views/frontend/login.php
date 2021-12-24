@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); // $_SESSION ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,15 +34,19 @@
 
                                 <?php if(!isset($_SESSION['LOGGED_USER'])): ?>
 
-                            <form id="form" action="" method="post">
-                                <?php if(isset($errorMessage)): ?>
-                                    <div class="alert alert-danger" role="alert">
-                                        <?= $errorMessage; ?>
-                                    </div>
+                                <form id="form" action="index.php?action=connect" method="post">
+                                    <?php if(isset($errorMessage)) : ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <?= $errorMessage; ?>
+                                        </div>
                                     <?php endif; ?>
-                                    <input type="text" id="name" name="name" placeholder="Pseudo *" value="<?= $_POST['name'] ?? '' ?>" required/><br><br>
-                                    <input type="password" id="password" name="password" placeholder="Mot de passe *" value="<?= $_POST['password'] ?? '' ?>" required/><br><br>   
-                                    <input class="btn-form" type="submit" value="Envoyer"/>
+                                    <label class="label_form" for="name">Pseudo</label><br>
+                                    <input type="text" id='name' name='name' required/><br><br>
+
+                                    <label class="label_form" for="name">Mot de passe</label><br>
+                                    <input type="password" id='password' name='password' required/><br><br>  
+
+                                    <input class="btn-form" type="submit" value="Envoyer"/><br>
                                 </form>
                                 <?php else: ?>
                                     <div class="alert alert-success" role="alert">

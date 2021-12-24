@@ -25,7 +25,7 @@ if (isset($_GET['action'])) {
                 $addComment->addComment($_GET['id'], $_POST['author'], $_POST['content']);
             }
             else {
-                echo 'Erreur : tous les champs ne sont pas remplis !';
+                throw new Exception('Erreur : tous les champs ne sont pas remplis !');
             }
         }
         else {
@@ -43,16 +43,27 @@ if (isset($_GET['action'])) {
         $login->login();
     }
 
+    else if($_GET['action'] === 'connect') {
+        $connect = new Frontend();
+        $connect->connect($_POST['name'], $_POST['password']);
+    }
+
     else if ($_GET['action'] === 'registration') {
         $registration = new Frontend();
-        $registration->registration($_POST['name'], $_POST['password']);
+        $registration->registration();
         }
+
+    else if ($_GET['action'] === 'addUser') {
+        $addUser = new Frontend();
+        $addUser->addUser($_POST['name'], $_POST['password']);
+    }
 
     else if ($_GET['action'] === 'admin') {
         $admin = new Frontend();
         $admin->admin();
     }
 }
+
 else {
     $home = new Frontend();
     $home->home();

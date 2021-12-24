@@ -32,6 +32,7 @@ class Frontend{
     {
         $commentManager = new CommentManager();
         $affectedLines = $commentManager->postComment($postId, $author, $content);
+
         if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');
         }
@@ -46,34 +47,27 @@ class Frontend{
     }
 
     public function login()
+    {    
+        require_once('views/frontend/login.php');
+    }
+    public function connect($name, $password)
     {
-        
-        if (isset($_POST['submit'])) {
+        $userManager = new UserManager();
+        $user = $userManager->connectUser($name, $password);
 
-            if (empty($_POST['name']) || empty($_POST['password'])) {
-        
-                $error = "Veuillez remplir tous les champs";
-        
+        if (isset($name) && isset($password)) {
+            foreach($user as $_POST){
+                if(
+                $user['name'] === $name &&
+                $user['password'] === $password
+            ){
+                $_SESSION['LOGGED_USER'] = $user['name'];
+                header('Location: index.php?action=login');
+            } else {
+                throw new Exception('Les informations envoyées ne permettent pas de vous identifier');
             }
-            
-            else {
-        
-                $name = htmlspecialchars(stripslashes(trim($_POST['name'])));
-                $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
-
-                
-            }
-            if (isset($_POST['name']) &&  isset($_POST['password'])) {
-                if (
-                    $name === $_POST['name'] &&
-                    $password === $_POST['password']
-                ) {
-                   $_SESSION['LOGGED_USER'] = $name;
-                }
             }
         }
-        require_once('views/frontend/login.php');
-
     }
 
     public function deconnexion()
@@ -81,27 +75,30 @@ class Frontend{
         session_destroy();
     }
 
-    public function registration($name, $password)
+    public function registration()
     {
-        var_dump($name); 
-        require_once('views/frontend/registration.php');
-
+        require_once('views/frontend/registration.php');    
+    }
+    public function addUser($name, $password)
+    {
         if (!empty($name) && !empty($password)) {
-            
+
             $name = htmlspecialchars(trim(stripslashes($name)));
             $password = htmlspecialchars(trim(stripslashes($password)));
 
             $userManager = new UserManager();     
-            $affectedLines2 = $userManager->createUser($name, $password);
+            $affectedLines = $userManager->createUser($name, $password);
 
-            if ($affectedLines2 === false) {
-            throw new Exception('Impossible d\'ajouter l\'utilisateur !');
+            if ($affectedLines === false) {
+                throw new Exception('Impossible d\'ajouter l\'utilisateur !');
+                }
+                else {
+                    header('Location: index.php?action=registration');
+                }
             }
-
             else {
-            header('Location: index.php?action=registration');
-            }
-        }     
+                throw new Exception('Les champs doivent être remplis');
+            } 
     }
 
     public function admin()
