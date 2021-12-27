@@ -47,7 +47,7 @@
                                         <input type="text" id="author" name="author" />
                                     </div><br>
                                     <div>
-                                        <label for="comment">Commentaire</label><br />
+                                        <label for="content">Commentaire</label><br />
                                         <textarea id="content" name="content"></textarea>
                                     </div>
                                     <div>

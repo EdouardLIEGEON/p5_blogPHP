@@ -87,18 +87,15 @@ class Frontend{
             $password = htmlspecialchars(trim(stripslashes($password)));
 
             $userManager = new UserManager();     
-            $affectedLines = $userManager->createUser($name, $password);
-
-            if ($affectedLines === false) {
+            $affectedLines2 = $userManager->createUser($name, $password);
+        
+            if ($affectedLines2 === false) {
                 throw new Exception('Impossible d\'ajouter l\'utilisateur !');
-                }
-                else {
-                    header('Location: index.php?action=registration');
-                }
             }
             else {
-                throw new Exception('Les champs doivent être remplis');
-            } 
+                header('Location: index.php?action=registration');
+            }
+        }   
     }
 
     public function admin()
