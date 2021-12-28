@@ -40,22 +40,12 @@ if (isset($_GET['action'])) {
 
     else if ($_GET['action'] === 'login') {
         $login = new Frontend();
-        $login->login();
-    }
-
-    else if($_GET['action'] === 'connect') {
-        $connect = new Frontend();
-        $connect->connect($_POST['name'], $_POST['password']);
+        $login->login($_POST['name'], $_POST['password']);
     }
 
     else if ($_GET['action'] === 'registration') {
         $registration = new Frontend();
-        $registration->registration();
-        }
-
-    else if ($_GET['action'] === 'addUser') {
-        $addUser = new Frontend();
-        $addUser->addUser($_POST['name'], $_POST['password']);
+        $registration->registration($_POST['name'], $_POST['password']);
     }
 
     else if ($_GET['action'] === 'admin') {

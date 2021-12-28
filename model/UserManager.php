@@ -6,7 +6,7 @@ class UserManager extends Manager{
     public function createUser($name, $password)
     {
         $db = $this->dbConnect();
-        $users = $db->prepare('INSERT INTO users(name, password) VALUES(?,?, NOW())');
+        $users = $db->prepare('INSERT INTO users(name, password) VALUES(?,?)');
         $affectedLines2 = $users->execute(array($name, $password));
 
         return $affectedLines2;
