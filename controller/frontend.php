@@ -75,13 +75,13 @@ class Frontend{
 
     public function registration()
     {
-        if (!empty($name) && !empty($password)) {
+        if (isset($_POST['name']) && isset($_POST['password'])) {
 
-        $name = htmlspecialchars(trim(stripslashes($name)));
-        $password = htmlspecialchars(trim(stripslashes($password)));
-
-        $userManager = new UserManager();
-        $affectedLines2 = $userManager->createUser($name, $password);
+            $name = htmlspecialchars(trim(stripslashes($_POST['name'])));
+            $password = htmlspecialchars(trim(stripslashes($_POST['password'])));
+            
+            $userManager = new UserManager();
+            $affectedLines2 = $userManager->createUser($name, $password);
     
             if ($affectedLines2 === false) {
                 die('Impossible d\'ajouter l\'utilisateur !');

@@ -45,7 +45,7 @@ if (isset($_GET['action'])) {
 
     else if ($_GET['action'] === 'registration') {
         $registration = new Frontend();
-        $registration->registration($_POST['name'], $_POST['password']);
+        $registration->registration($_POST);
     }
 
     else if ($_GET['action'] === 'admin') {

@@ -27,7 +27,7 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <form id="form" action="index.php?action=addUser" method="post">
+                                <form id="form" action="" method="post">
 
                                     <label class="label_form" for="name">Pseudo</label><br>
                                     <input type="text" id='name' name='name' required/><br><br>
