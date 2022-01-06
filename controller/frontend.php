@@ -47,22 +47,24 @@ class Frontend{
         require_once('views/frontend/contact.php');
     }
 
-    public function login($name, $password)
+    public function login()
     {  
-        $userManager = new UserManager();
-        $user = $userManager->connectUser($name, $password);
+        $success_message = "";
+        if (isset($_POST['name']) && isset($_POST['password'])) {
 
-        if (isset($name) && isset($password)) {
-            foreach($user as $_POST){
-                if(
-                $user['name'] === $name &&
-                $user['password'] === $password
-            ){
-                $_SESSION['LOGGED_USER'] = $user['name'];
-                header('Location: index.php?action=login');
+            $name = htmlspecialchars(trim(stripslashes($_POST['name'])));
+            $password = htmlspecialchars(trim(stripslashes($_POST['password']))); 
+
+            $userManager = new UserManager();
+            $userManager->connectUser();
+
+                if ($user['name'] = $name && $user['password'] = $password){
+                 
+                $_SESSION['name'] = $name;
+                $success_message = "Bonjour  " .$_SESSION['name'];
+
             } else {
                 throw new Exception('Les informations envoyées ne permettent pas de vous identifier');
-            }
             }
         }
         require_once('views/frontend/login.php');
@@ -75,6 +77,7 @@ class Frontend{
 
     public function registration()
     {
+        $success_message = "";
         if (isset($_POST['name']) && isset($_POST['password'])) {
 
             $name = htmlspecialchars(trim(stripslashes($_POST['name'])));
@@ -87,7 +90,7 @@ class Frontend{
                 die('Impossible d\'ajouter l\'utilisateur !');
             }
             else {
-            header('Location: index.php?action=registration');
+            $success_message = "Vous pouvez maintenant vous connecter";
             }
         }  
         require_once('views/frontend/registration.php');

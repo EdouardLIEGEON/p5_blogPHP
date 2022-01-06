@@ -40,7 +40,7 @@ if (isset($_GET['action'])) {
 
     else if ($_GET['action'] === 'login') {
         $login = new Frontend();
-        $login->login($_POST['name'], $_POST['password']);
+        $login->login($_POST);
     }
 
     else if ($_GET['action'] === 'registration') {

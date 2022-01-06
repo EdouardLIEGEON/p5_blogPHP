@@ -6,20 +6,17 @@ class UserManager extends Manager{
     public function createUser($name, $password)
     {
         $db = $this->dbConnect();
-        $users = $db->prepare('INSERT INTO users(name, password) VALUES(?,?)');
+        $users = $db->prepare('INSERT INTO users(name, password, role) VALUES(?,?, "membre")');
         $affectedLines2 = $users->execute(array($name, $password));
 
         return $affectedLines2;
     }
     
-    public function connectUser($name, $password)
+    public function connectUser()
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT name, password FROM users');
-        $req->execute(array($name, $password));
-        $user = $req->fetch();
-
-        return $user;
+        $user = $db->prepare('SELECT * FROM users');
+        $user->fetch();
     }
 }
 

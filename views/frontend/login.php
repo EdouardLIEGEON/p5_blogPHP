@@ -32,13 +32,9 @@
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
 
-                                <?php if(!isset($_SESSION['LOGGED_USER'])): ?>
+                                <?php if(!isset($_SESSION['name'])): ?>
 
-                                <form id="form" action="index.php?action=connect" method="post">
-                                    <?php if(isset($errorMessage)) : ?>
-                                        <div class="alert alert-danger" role="alert">
-                                            <?= $errorMessage; ?>
-                                        </div>
+                                <form id="form" action="" method="post">
                                     <?php endif; ?>
                                     <label class="label_form" for="name">Pseudo</label><br>
                                     <input type="text" id='name' name='name' required/><br><br>
@@ -48,11 +44,8 @@
 
                                     <input class="btn-form" type="submit" value="Envoyer"/><br>
                                 </form>
-                                <?php else: ?>
-                                    <div class="alert alert-success" role="alert">
-                                        Bonjour <?= $_SESSION['LOGGED_USER']; ?> !
+                                    <div class="success_message"><?= $success_message; ?>
                                     </div>
-                                    <?php endif; ?>
                                 </form>
                             </div>
                         </div>

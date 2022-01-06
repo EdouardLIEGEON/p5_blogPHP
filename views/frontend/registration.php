@@ -1,3 +1,5 @@
+<?php session_start(); // $_SESSION ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -38,6 +40,8 @@
                                     <input class="btn-form" type="submit" value="Envoyer"/><br>
                                     
                                 </form>
+                                <div class="success_message"><?= $success_message; ?>
+                                    </div>
                             </div>
                         </div>
                     </div>

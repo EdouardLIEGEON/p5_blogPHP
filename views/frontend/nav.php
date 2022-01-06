@@ -1,9 +1,7 @@
         <header>
-                    <h1>
-                        Edouard LIEGEON<br>
-                        <a target="_blank" href="https://www.linkedin.com/feed/"><img class="img_header"src="public/images/logoEd" width="100px" height="100px" alt="Logo"></a><br>
-                        Développeur
-                    </h1>
+            <h1>Edouard LIEGEON <a target="_blank" href="https://www.linkedin.com/feed/">
+            <img class="img_header"src="public/images/logoEd" width="100px" height="100px" alt="Logo"></a>
+            Développeur</h1>
         </header>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">

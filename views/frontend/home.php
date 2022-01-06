@@ -18,6 +18,7 @@
         <link href="public/styles.css" rel="stylesheet" />
     </head>
 <?php include('nav.php') ?>
+
 <section class="page-section clearfix intro">
             <div class="container">
                 <div class="intro">
