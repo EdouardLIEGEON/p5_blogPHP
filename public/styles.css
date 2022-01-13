@@ -292,7 +292,7 @@ input::placeholder, textarea::placeholder{
   transition: 1s;
 }
 .success_message{
-  margin-top: 25px;
+  margin-bottom: 25px;
   font-family: lato;
   font-size: 25px;
   color:#fff;

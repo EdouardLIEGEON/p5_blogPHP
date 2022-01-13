@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
                                     <div>
-                                        <label for="author">Auteur</label><br />
+                                        <label for="author"><?= $_SESSION['name'] ?></label><br />
                                         <input type="text" id="author" name="author" />
                                     </div><br>
                                     <div>

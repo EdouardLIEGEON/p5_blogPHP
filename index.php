@@ -52,6 +52,10 @@ if (isset($_GET['action'])) {
         $admin = new Frontend();
         $admin->admin();
     }
+    else if ($_GET['action'] === 'deconnexion') {
+        $deconnexion = new Frontend();
+        $deconnexion->deconnexion();
+    }
 }
 
 else {

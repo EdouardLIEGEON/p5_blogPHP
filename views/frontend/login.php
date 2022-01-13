@@ -35,6 +35,8 @@
                                 <?php if(!isset($_SESSION['name'])): ?>
 
                                 <form id="form" action="" method="post">
+                                <div class="success_message"><?= $success_message; ?>
+                                    </div>
                                     <?php endif; ?>
                                     <label class="label_form" for="name">Pseudo</label><br>
                                     <input type="text" id='name' name='name' required/><br><br>
@@ -44,8 +46,7 @@
 
                                     <input class="btn-form" type="submit" value="Envoyer"/><br>
                                 </form>
-                                    <div class="success_message"><?= $success_message; ?>
-                                    </div>
+                                    
                                 </form>
                             </div>
                         </div>

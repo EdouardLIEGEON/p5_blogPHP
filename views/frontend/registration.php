@@ -29,6 +29,8 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
+                            <div class="success_message"><?= $success_message; ?>
+                                    </div>
                                 <form id="form" action="" method="post">
 
                                     <label class="label_form" for="name">Pseudo</label><br>
@@ -40,8 +42,6 @@
                                     <input class="btn-form" type="submit" value="Envoyer"/><br>
                                     
                                 </form>
-                                <div class="success_message"><?= $success_message; ?>
-                                    </div>
                             </div>
                         </div>
                     </div>

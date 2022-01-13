@@ -53,12 +53,12 @@ class Frontend{
         if (isset($_POST['name']) && isset($_POST['password'])) {
 
             $name = htmlspecialchars(trim(stripslashes($_POST['name'])));
-            $password = htmlspecialchars(trim(stripslashes($_POST['password']))); 
+            $password = htmlspecialchars(md5(trim(stripslashes($_POST['password'])))); 
 
             $userManager = new UserManager();
             $userManager->connectUser();
 
-                if ($user['name'] = $name && $user['password'] = $password){
+            if ($user['name'] = $name && $user['password'] = $password){
                  
                 $_SESSION['name'] = $name;
                 $success_message = "Bonjour  " .$_SESSION['name'];
@@ -67,12 +67,14 @@ class Frontend{
                 throw new Exception('Les informations envoyées ne permettent pas de vous identifier');
             }
         }
+
         require_once('views/frontend/login.php');
     }
 
     public function deconnexion()
     {
         session_destroy();
+        header('Location: index.php');
     }
 
     public function registration()
