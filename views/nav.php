@@ -1,7 +1,9 @@
+<?php session_start(); ?>
+<!-- <div class="login_message"><?=$login_message;?></div> -->
 
         <header>
             <h1>Edouard LIEGEON <a target="_blank" href="https://www.linkedin.com/feed/">
-            <img class="img_header"src="public/images/logoEd" width="100px" height="100px" alt="Logo"></a>
+            <img class="img_header"src="/images/logoEd.png" width="100px" height="100px" alt="Logo"></a>
             Développeur PHP</h1>
         </header>
         <!-- Navigation-->
@@ -12,18 +14,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php">Accueil</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=listPosts">Mes  posts</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=contact">Contact</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=listPosts">Mes  projets</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=contact">Me contacter</a></li>
                         <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=login">Se connecter</a></li>
-                        <?php
-                         if(isset($_SESSION[''])){ ?>
-                            <?= '<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=deconnexion">Se déconnecter</a></li>';}
-                            else echo ""; ?>
-                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=registration">S'inscrire</a></li>
-                        <?php
-                        if(isset($_SESSION['Admin']) && $name = 'Admin'){ ?>
-                            <?='<li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=admin">Admin</a></li>';}
-                            else echo ""; ?>
+                        <?php if(isset($_SESSION['user']) && !empty ($_SESSION['user']['id'])) : ?>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=deconnexion">Se déconnecter</a></li>
+                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=registration">S"inscrire</a></li>
+                            <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=admin">Admin</a></li>
+                            <?php endif; ?>
                     </ul>
                 </div>
             </div>

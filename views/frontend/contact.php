@@ -1,4 +1,3 @@
-<?php session_start(); // $_SESSION ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,19 +28,13 @@
                                 <span class="section-heading-lower">Contactez-moi</span>
                             </h2>
                             <div id="box">
-                                <form id="form" enctype="multipart/form-data" onsubmit="return validate()" method="post">
-                                    <input type="text" id="name" name="name" placeholder="Nom et Prénom"/><br><br>
-                                    <input type="text" id="email" name="email" placeholder="Email"/><br><br>
-                                    <input type="text" id="subject" name="subject" placeholder="Sujet"/><br><br>
-                                    <textarea id="message" name="message" placeholder="Message..."></textarea><br><br>
+                                <?php echo $success_contact ?>
+                                <form id="form" enctype="multipart/form-data" action="" method="post">
+                                    <input type="text" id="name" name="name" placeholder="Nom et Prénom" required/><br><br>
+                                    <input type="text" id="email" name="email" placeholder="Email" required/><br><br>
+                                    <input type="text" id="subject" name="subject" placeholder="Sujet" required/><br><br>
+                                    <textarea id="message" name="message" placeholder="Message..." required></textarea><br><br>
                                     <input class="btn-form" type="submit" name="send" value="Envoyer"/>
-                                <div id="statusMessage"> 
-                                    <?php if (! empty($db_msg)) { ?>
-                                    <p class='<?= $type_db_msg; ?>Message'><?= $db_msg; ?></p>
-                                    <?php } ?>
-                                    <?php if (! empty($mail_msg)) { ?>
-                                    <p class='<?= $type_mail_msg; ?>Message'><?= $mail_msg; ?></p>
-                                    <?php } ?>
                                 </div>
                                 </form>
                             </div>

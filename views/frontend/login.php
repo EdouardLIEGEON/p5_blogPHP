@@ -1,4 +1,3 @@
-<?php session_start(); // $_SESSION ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +20,7 @@
     </head>
     <body>
     <header>
-        <h2 class="section-heading mb-0">
-                                Se connecter
-                            </h2><br>
+        <h2 class="section-heading mb-0">Se connecter</h2><br>
         </header>
         <section class="page-section cta">
             <div class="container">
@@ -31,13 +28,8 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-
-                                <?php if(!isset($_SESSION['name'])): ?>
-
                                 <form id="form" action="" method="post">
-                                <div class="success_message"><?= $success_message; ?>
-                                    </div>
-                                    <?php endif; ?>
+                                <div class="success_message"><?php echo $success_message; echo $error_message; ?></div>
                                     <label class="label_form" for="name">Pseudo</label><br>
                                     <input type="text" id='name' name='name' required/><br><br>
 
@@ -45,8 +37,6 @@
                                     <input type="password" id='password' name='password' required/><br><br>  
 
                                     <input class="btn-form" type="submit" value="Envoyer"/><br>
-                                </form>
-                                    
                                 </form>
                             </div>
                         </div>
