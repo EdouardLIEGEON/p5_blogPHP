@@ -21,4 +21,21 @@ class PostsController extends Controller
         $this->render('../Views/Posts/index', compact('posts'));
 
     }
+    /**
+     * Cette méthode affiche 1 post
+     *
+     * @param integer $id Id de l'annonce
+     * @return void
+     */
+    public function single(int $id)
+    {
+     //On instancie le model
+     $postsModel = new PostsModel;
+
+     //On va cherche 1 post
+     $post = $postsModel->find($id);
+
+     //On envoie à la vue
+     $this->render('posts/single', compact('post'));
+    }
 }
