@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 class Controller
 {
-    public function render(string $fichier, array $donnees = [])
+    public function render(string $fichier, array $donnees = [], string $template = 'default')
     {
         //On extrait le contenu de $donnees
         extract($donnees);

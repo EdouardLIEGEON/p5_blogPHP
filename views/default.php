@@ -6,6 +6,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Edouard LIEGEON - Développeur PHP/Symfony</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+        crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="/images/logoEd.png" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -22,22 +25,25 @@
         </header>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
-            <div class="container">
                 <a class="navbar-brand text-uppercase fw-bold d-lg-none" href="index.html">menu</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/">Accueil</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/posts">Mes  projets</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=contact">Me contacter</a></li>
-                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=login">Se connecter</a></li>
-                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="index.php?action=deconnexion">Se déconnecter</a></li>
-                        <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=registration">S"inscrire</a></li>
-                            <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="index.php?action=admin">Admin</a></li>
-                            <li><a href="https://www.linkedin.com/in/edouardliegeon/"><img src="images/linkedin.png" width="30px" height="30px" alt="Logo Linkedin"></a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="contact">Me contacter</a></li>
+                    </ul>
+                    <ul class="navbar-nav mx-auto">
+                        <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])): ?>
+                            <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/users/logout">Se déconnecter</a></li>
+                            <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="posts/admin">Admin</a></li>
+                            <?php else: ?>
+                                <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="/users/login">Se connecter</a></li>
+                                <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="/users/register">S"inscrire</a></li>
+                                <?php endif; ?>
+                                <li><a href="https://www.linkedin.com/in/edouardliegeon/"><img src="/images/linkedin.png" width="30px" height="30px" alt="Logo Linkedin"></a></li>
                     </ul>
                 </div>
-            </div>
         </nav>
 <body>
     <div class="container">
@@ -49,6 +55,12 @@
             <div class="container"><p class="m-0 small">Edouard LIEGEON 2021 &copy; </p></div><img src="/images/logoEd.png" width="75px" height="75px" alt="Logo">
         </footer>
         <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" 
+         crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" 
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" 
+        crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>

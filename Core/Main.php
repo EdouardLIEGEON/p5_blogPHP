@@ -6,6 +6,9 @@ class Main
 {
     public function start()
     {
+        //On démarre la session//
+        session_start();
+
         // On récupère l'adresse
         $uri = $_SERVER['REQUEST_URI'];
 
@@ -19,7 +22,6 @@ class Main
 
         // On redirige vers l'URL dans /
             header('Location: '.$uri);
-            exit;
         }
         // On sépare les paramètres et on les met dans le tableau $params
         $params = explode('/', $_GET['p']);

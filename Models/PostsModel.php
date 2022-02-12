@@ -9,10 +9,6 @@ class PostsModel extends Model
     protected $header;
     protected $mockup;
     protected $subTitle;
-    protected $technology1;
-    protected $technology2;
-    protected $technology3;
-    protected $technology4;
     protected $date;
     protected $id_comments;
     
@@ -78,46 +74,6 @@ class PostsModel extends Model
     public function setSubTitle($subTitle)
     {
         $this->subTitle = $subTitle;
-        return $this;
-    }
-
-    public function getTechnology1()
-    {
-        return $this->technology1;
-    }
-    public function setTechnology1($technology1)
-    {
-        $this->technology1 = $technology1;
-        return $this;
-    }
-
-    public function getTechnology2()
-    {
-        return $this->technology2;
-    }
-    public function setTechnology2($technology2)
-    {
-        $this->technology2 = $technology2;
-        return $this;
-    }
-
-    public function getTechnology3()
-    {
-        return $this->technology3;
-    }
-    public function setTechnology3($technology3)
-    {
-        $this->technology3 = $technology3;
-        return $this;
-    }
-
-    public function getTechnology4()
-    {
-        return $this->technology4;
-    }
-    public function setTechnology4($technology4)
-    {
-        $this->technology4 = $technology4;
         return $this;
     }
 

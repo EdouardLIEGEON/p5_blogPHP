@@ -57,7 +57,7 @@ class Form
                 $str .= " $attribut";
             }else{
                 //On ajoute attribut= 'valeur'
-                $str .= " $attribut='$valeur'";
+                $str .= " $attribut=\"$valeur\"";
             }
         }
         return $str;
@@ -90,6 +90,84 @@ class Form
     public function finForm()
     {
         $this->formCode .= '</form>';
+        return $this;
+    }
+    /**
+     * Ajout d'un label
+     *
+     * @param string $for
+     * @param string $texte
+     * @param array $attributs
+     * @return Form
+     */
+    public function ajoutLabelFor(string $for, string $texte, array $attributs = []): self
+    {
+        //On ouvre la balise
+        $this->formCode .= "<label for='$for'";
+
+        //On ajoute les attributs
+        $this->formCode .= $attributs ? $this->ajoutAttributs($attributs) : '';
+
+        //On ajoute le texte
+        $this->formCode .= ">$texte</label>";
+
+        return $this;
+    }
+
+    public function ajoutInput(string $type, string $nom, array $attributs = []): self
+    {
+        //On ouvre la balise
+        $this->formCode .= "<input type='$type' name='$nom'";
+
+        //On ajoute les attributs
+        $this->formCode .= $attributs ? $this->ajoutAttributs($attributs). '>' : '>';
+
+        return $this;
+    }
+
+    public function ajoutTextarea(string $nom, string $valeur = '', array $attributs = []): self
+    {
+          //On ouvre la balise
+          $this->formCode .= "<textarea name='$nom'";
+
+          //On ajoute les attributs
+          $this->formCode .= $attributs ? $this->ajoutAttributs($attributs) : '';
+  
+          //On ajoute le texte
+          $this->formCode .= ">$valeur</textarea>";
+  
+          return $this;
+    }
+
+    public function ajoutSelect(string $nom, array $options, array $attributs = []): self
+    {
+        //On crée le select
+        $this->formCode .= "<select name='$nom'";
+
+        //On ajoute les attributs
+        $this->formCode .= $attributs ? $this->ajoutAttributs($attributs). '>' : '>';
+
+        foreach($options as $valeur => $texte){
+            $this->formCode .= "<option value=\"$valeur\">$texte</option>";
+        }
+
+        //On ferme le select
+        $this->formCode .= '</select>';
+
+        return $this;
+    }
+
+    public function ajoutBouton(string $texte, array $attributs = []): self
+    {
+        //On ouvre le bouton
+        $this->formCode .= '<button';
+
+        //On ajoute les attributs
+        $this->formCode .= $attributs ? $this->ajoutAttributs($attributs): '';
+
+        //On ajoute le texte et on ferme
+        $this->formCode .= ">$texte</button>";
+
         return $this;
     }
 }
