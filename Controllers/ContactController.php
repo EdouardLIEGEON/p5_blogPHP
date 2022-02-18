@@ -15,10 +15,9 @@ class ContactController extends Controller
                 ->ajoutInput('email', 'email', ['id'=> 'password', 'class'=> 'form-control'])
                 ->ajoutLabelFor('message', 'Laissez-moi un message :')
                 ->ajoutTextarea('message','message', ['id'=>'message', 'class'=>'form-control'])
-                 ->ajoutLabelFor('subTitle', 'Sous-Titre')
                 ->ajoutBouton('Envoyer', ['class'=> 'btn btn-primary'])
                 ->finForm();
 
-                $this->render('../Views/contact', ['contactForm' => $form->create()]);
+                $this->render('/contact', ['contactForm' => $form->create()]);
     }
 }

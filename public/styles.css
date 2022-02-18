@@ -75,7 +75,9 @@ body {
   font-size: 15px;
   padding: 10px 25px;
   margin-top: 25px;
-  position: absolute;
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
 }
 .btn-projects:hover{
   background-color: #2c75ff;
@@ -160,6 +162,9 @@ em{
 }
 .img_header{
   margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 hr {
   margin: 1rem 0;
@@ -3170,6 +3175,10 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #f00020;
   border-color: #f00020;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
 }
 .btn-ptimary a{
   font-family: lazer;
@@ -7360,10 +7369,6 @@ textarea.form-control-lg {
   margin: 3rem !important;
 }
 
-.m-auto {
-  margin: auto !important;
-}
-
 .mx-0 {
   margin-right: 0 !important;
   margin-left: 0 !important;
@@ -7544,6 +7549,9 @@ textarea.form-control-lg {
 
 .ms-auto {
   margin-left: auto !important;
+}
+.m-auto{
+  margin: 2em 0 !important;
 }
 
 .p-0 {
@@ -11552,6 +11560,29 @@ p {
 
 .footer {
   background-color: #f00020;
+  padding: 2em 0;
+}
+footer a{
+  text-align: center;
+  font-family: lazer;
+}
+footer .text-uppercase{
+  color: #fff;
+}
+footer .text-uppercase:hover{
+  color: #2c75ff;
+}
+footer p{
+  text-align: center;
+  font-family: lazer;
+}
+footer img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer .row{
+  padding-bottom: 2em;
 }
 
 .intro {

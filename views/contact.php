@@ -1,4 +1,3 @@
- <body>
         <section class="page-section cta">
             <div class="container">
                 <div class="row">
@@ -8,11 +7,11 @@
                                 <span class="section-heading-lower">Contactez-moi</span>
                             </h2>
                             <div id="box">
-                               <?= $contactForm ?>
-                                </form>
+                               <?= $form ?>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>                   
+            </div>     
+        </section>              
 </html>

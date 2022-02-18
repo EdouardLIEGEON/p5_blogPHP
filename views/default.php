@@ -19,9 +19,9 @@
         <link href="/styles.css" rel="stylesheet" />
     </head>
     <header>
-            <h1>Edouard LIEGEON 
-            <img class="img_header"src="/images/logoEd.png" width="100px" height="100px" alt="Logo">
-            Développeur PHP</h1>
+            <h1>Edouard LIEGEON<br>
+            <img class="img_header"src="/images/logoEd.png" width="100px" height="100px" alt="Logo"><br>
+            Développeur PHP / Symfony - Wordpress</h1>
         </header>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
@@ -30,13 +30,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/">Accueil</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/posts">Mes  projets</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/posts">Mes  posts</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="contact">Me contacter</a></li>
                     </ul>
                     <ul class="navbar-nav mx-auto">
                         <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])): ?>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/users/logout">Se déconnecter</a></li>
-                            <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="posts/admin">Admin</a></li>
                             <?php else: ?>
                                 <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="/users/login">Se connecter</a></li>
                                 <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="/users/register">S"inscrire</a></li>
@@ -51,8 +50,12 @@
     </div>
     
 </body>
-<footer class="footer text-faded text-center py-5">
-            <div class="container"><p class="m-0 small">Edouard LIEGEON 2021 &copy; </p></div><img src="/images/logoEd.png" width="75px" height="75px" alt="Logo">
+<footer class="footer text-faded">
+            <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])): ?>
+                <a target="blank" class="nav-link text-uppercase" href="posts/admin">Admin</a>
+            <?php else: ?>
+            <?php endif ?>
+        <p>Edouard LIEGEON 2021 &copy; </p><img src="/images/logoEd.png" width="75px" height="75px" alt="Logo">
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"

@@ -8,11 +8,6 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <?php if(!empty($_SESSION['erreur'])): ?>
-                                <div class="alert alert-danger" role="alert">
-                                <?php echo $_SESSION['erreur']; unset($_SESSION['erreur']); ?>
-                                </div>
-                                <?php endif; ?>
                                 <?= $loginForm ?> 
                             </div>
                         </div>

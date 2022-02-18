@@ -1,7 +1,9 @@
 <?php
 namespace App\Controllers;
 use App\Models\PostsModel;
+use App\Models\CommentsModel;
 use App\Core\Form;
+use DateTime;
 
 class PostsController extends Controller
 {
@@ -35,24 +37,59 @@ class PostsController extends Controller
 
     }
     /**
-     * Cette méthode affiche 1 post
+     * Cette méthode affiche 1 post, les commentaires et le formulaire d'ajout des com
      *
      * @param integer $id Id de l'annonce
      * @return void
      */
     public function single(int $id)
     {
+        $form = new Form;
+
+        $form->debutForm()
+                    ->ajoutLabelFor('content', 'Ajoutez un commentaire')
+                    ->ajoutTextarea('content','', ['id'=>'content', 'class'=> 'form-control'])
+                    ->ajoutBouton('Ajouter', ['class'=>'btn btn-primary'])
+                    ->finForm();
+
      //On instancie le model
      $postsModel = new PostsModel;
+     $commentsModel = new CommentsModel;
 
      //On va cherche 1 post
      $post = $postsModel->find($id);
+     $comments = $commentsModel->findAll();
 
      //On envoie à la vue
-     $this->render('posts/single', compact('post'));
-    
+     $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
+
+     if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])){
+        if(Form::validate($_POST, ['content'])){
+            //On se protège contre les failles xss
+            $content = strip_tags($_POST['content']);
+            $id_post = $post->id;
+
+            //On insancie notre modèle
+            $comment = new CommentsModel;
+            $post = new PostsModel;
+
+            //On hydrate
+            $comment->setAuthor($_SESSION['user']['name'])
+                            -> setContent($content)
+                            ->setId_post($id_post);
+
+            $comment->create();
+
+            //On redirige
+            header('Location: /posts/single');
+            exit;
+         }
+    }else{
+
+        }
     }
 
+    
     /**
      * Ajouter une annonce
      *
@@ -67,9 +104,7 @@ class PostsController extends Controller
             //strip_tags, htmlentities, htmlspecialchars
             $title = strip_tags($_POST['title']);
             $content = strip_tags($_POST['content']);
-            $header = strip_tags($_POST['header']);
             $subTitle = strip_tags($_POST['subTitle']);
-            $mockup = strip_tags($_POST['mockup']);
 
             //On instancie notre modèle
             $post = new PostsModel;
@@ -77,9 +112,8 @@ class PostsController extends Controller
             //On hydrate
             $post->setTitle($title)
                 ->setContent($content)
-                ->setHeader($header)
                 ->setSubTitle($subTitle)
-                ->setMockup($mockup);
+                ->setAuthor($_SESSION['user']['name']); 
 
             //On enregistre
             $post->create();
@@ -99,10 +133,6 @@ class PostsController extends Controller
         ->ajoutTextarea('content','', ['id'=>'content', 'class'=>'form-control'])
         ->ajoutLabelFor('subTitle', 'Sous-Titre')
         ->ajoutInput('text', 'subTitle', ['id' => 'subTitle', 'class'=> 'form-control'])
-        ->ajoutLabelFor('mockup', 'Mockup')
-        ->ajoutInput('text', 'mockup', ['id' => 'ajout_mockup', 'class'=> 'form-control'])
-        ->ajoutLabelFor('header', 'header')
-        ->ajoutInput('text', 'header', ['id' => 'ajout_header', 'class'=> 'form-control'])
         ->ajoutBouton('Ajouter', ['class'=> 'btn btn-primary'])
         ->finForm();
 
@@ -127,7 +157,7 @@ class PostsController extends Controller
         //Si l'annonce n'existe pas, on retourne à la liste des annonces
         if(!$post){
             http_response_code(404);
-            $_SESSION['erreur'] = "L'annonce recherchée n'existe pas";
+            $_SESSION['erreur'] = "Le post recherché n'existe pas";
             header('Location: /admin');
             exit;
         }
@@ -137,9 +167,7 @@ class PostsController extends Controller
             //On se protège des failles xss
             $title = strip_tags($_POST['title']);
             $content = strip_tags($_POST['content']);
-            $header = strip_tags($_POST['header']);
             $subTitle = strip_tags($_POST['subTitle']);
-            $mockup = strip_tags($_POST['mockup']);
 
             //On stocke l'annonce
             $postModif = new PostsModel;
@@ -148,10 +176,7 @@ class PostsController extends Controller
             $postModif->setId($post->id)
                         ->setTitle($title)
                         ->setContent($content)
-                         ->setHeader($header)
-                        ->setSubTitle($subTitle)
-                         ->setMockup($mockup);
-
+                        ->setSubTitle($subTitle);
             //On met à jour l'annonce
             $postModif->update();
 
@@ -169,10 +194,6 @@ class PostsController extends Controller
         ->ajoutTextarea('content',$post->content, ['id'=>'content', 'class'=>'form-control'])
         ->ajoutLabelFor('subTitle', 'Sous-Titre')
         ->ajoutInput('text', 'subTitle', ['id' => 'subTitle', 'class'=> 'form-control', 'value'=> $post->subTitle])
-        ->ajoutLabelFor('mockup', 'Mockup')
-        ->ajoutInput('text', 'mockup', ['id' => 'modif_mockup', 'class'=> 'form-control', 'value'=> $post->mockup])
-        ->ajoutLabelFor('header', 'Header')
-        ->ajoutInput('text', 'header', ['id' => 'modif_header', 'class'=> 'form-control', 'value'=> $post->header])
         ->ajoutBouton('Modifier', ['class'=> 'btn btn-primary'])
         ->finForm();
 
@@ -188,7 +209,6 @@ class PostsController extends Controller
         //On redirige
         $this->render('../Views/Posts/supprimer', compact('posts'));
         header('Location:/posts/admin');
-
-
     }
+
 }

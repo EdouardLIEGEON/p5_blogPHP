@@ -6,11 +6,9 @@ class PostsModel extends Model
     protected $id;
     protected $title;
     protected $content;
-    protected $header;
-    protected $mockup;
     protected $subTitle;
     protected $date;
-    protected $id_comments;
+    protected $author;
     
     public function __construct()
     {
@@ -47,26 +45,6 @@ class PostsModel extends Model
         return $this;
     }
 
-    public function getHeader()
-    {
-        return $this->header;
-    }
-    public function setHeader($header)
-    {
-        $this->header = $header;
-        return $this;
-    }
-
-    public function getMockup()
-    {
-        return $this->mockup;
-    }
-    public function setMockup($mockup)
-    {
-        $this->mockup = $mockup;
-        return $this;
-    }
-
     public function getSubTitle()
     {
         return $this->subTitle;
@@ -87,13 +65,24 @@ class PostsModel extends Model
         return $this;
     }
 
-    public function getId_comments()
+
+    /**
+     * Get the value of author
+     */ 
+    public function getAuthor()
     {
-        return $this->id_comments;
+        return $this->author;
     }
-    public function setId_comments($id_comments)
+
+    /**
+     * Set the value of author
+     *
+     * @return  self
+     */ 
+    public function setAuthor($author)
     {
-        $this->id_comments = $id_comments;
+        $this->author = $author;
+
         return $this;
     }
 }
