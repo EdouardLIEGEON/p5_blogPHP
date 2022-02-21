@@ -47,44 +47,46 @@ class PostsController extends Controller
         $form = new Form;
 
         $form->debutForm()
-                    ->ajoutLabelFor('content', 'Ajoutez un commentaire')
-                    ->ajoutTextarea('content','', ['id'=>'content', 'class'=> 'form-control'])
-                    ->ajoutBouton('Ajouter', ['class'=>'btn btn-primary'])
-                    ->finForm();
+                ->ajoutLabelFor('content', 'Ajoutez un commentaire')
+                ->ajoutTextarea('content','', ['id'=>'content', 'class'=> 'form-control'])
+                ->ajoutBouton('Ajouter', ['class'=>'btn btn-primary'])
+                ->finForm();
 
-     //On instancie le model
-     $postsModel = new PostsModel;
-     $commentsModel = new CommentsModel;
+        //On instancie le model
+        $postsModel = new PostsModel;
+        $commentsModel = new CommentsModel;
 
-     //On va cherche 1 post
-     $post = $postsModel->find($id);
-     $comments = $commentsModel->findAll();
+        //On va cherche 1 post
+        $post = $postsModel->find($id);
+        $comments = $commentsModel->findBy(array('id_post' => $post->id));
 
-     //On envoie à la vue
-     $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
+        //On envoie à la vue
+        $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
 
-     if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])){
-        if(Form::validate($_POST, ['content'])){
-            //On se protège contre les failles xss
-            $content = strip_tags($_POST['content']);
-            $id_post = $post->id;
+        if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])){
+            //L'utilsateur est connecté
+            //On vérifie si le formulaire est complet
+            if(Form::validate($_POST, ['content'])){
+                //On se protège contre les failles xss
+                $content = strip_tags($_POST['content']);
+               
 
-            //On insancie notre modèle
-            $comment = new CommentsModel;
-            $post = new PostsModel;
+                //On instancie notre modèle
+                $comment = new CommentsModel;
+                $post = new PostsModel;
 
-            //On hydrate
-            $comment->setAuthor($_SESSION['user']['name'])
-                            -> setContent($content)
-                            ->setId_post($id_post);
+                //On hydrate
+                $comment->setAuthor($_SESSION['user']['name'])
+                                ->setContent($content)
+                                ->setId_post($comment->id_post);
 
-            $comment->create();
+                $comment->create();
 
-            //On redirige
-            header('Location: /posts/single');
-            exit;
-         }
-    }else{
+                //On redirige
+                header("Location: /posts/single");
+                exit;
+            }
+        }else{
 
         }
     }
@@ -207,7 +209,6 @@ class PostsController extends Controller
         $post = $postModel->delete($id);
 
         //On redirige
-        $this->render('../Views/Posts/supprimer', compact('posts'));
         header('Location:/posts/admin');
     }
 
