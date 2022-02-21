@@ -69,7 +69,7 @@ class PostsController extends Controller
             if(Form::validate($_POST, ['content'])){
                 //On se protège contre les failles xss
                 $content = strip_tags($_POST['content']);
-               
+                $id_post = $post->id;
 
                 //On instancie notre modèle
                 $comment = new CommentsModel;
@@ -78,7 +78,7 @@ class PostsController extends Controller
                 //On hydrate
                 $comment->setAuthor($_SESSION['user']['name'])
                                 ->setContent($content)
-                                ->setId_post($comment->id_post);
+                                ->setId_post($id_post);
 
                 $comment->create();
 
