@@ -21,7 +21,7 @@ class PostsController extends Controller
         $posts = $postsModel->findAll();
 
         //On génère la vue
-        $this->render('../Views/Posts/index', compact('posts'));
+        $this->render('/Posts/index', compact('posts'));
 
     }
     public function admin()
@@ -33,7 +33,7 @@ class PostsController extends Controller
         $posts = $postsModel->findAll();
 
         //On génère la vue
-        $this->render('../Views/Posts/admin', compact('posts'));
+        $this->render('/Posts/admin', compact('posts'));
 
     }
     /**
@@ -44,32 +44,18 @@ class PostsController extends Controller
      */
     public function single(int $id)
     {
-        $form = new Form;
-
-        $form->debutForm()
-                ->ajoutLabelFor('content', 'Ajoutez un commentaire')
-                ->ajoutTextarea('content','', ['id'=>'content', 'class'=> 'form-control'])
-                ->ajoutBouton('Ajouter', ['class'=>'btn btn-primary'])
-                ->finForm();
-
         //On instancie le model
         $postsModel = new PostsModel;
         $commentsModel = new CommentsModel;
 
-        //On va cherche 1 post
-        $post = $postsModel->find($id);
-        $comments = $commentsModel->findBy(array('id_post' => $post->id));
-
-        //On envoie à la vue
-        $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
-
+        //On vérifie que l'utilisateur est bien connecté
         if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])){
-            //L'utilsateur est connecté
+            //L'utilisateur est connecté
             //On vérifie si le formulaire est complet
             if(Form::validate($_POST, ['content'])){
                 //On se protège contre les failles xss
                 $content = strip_tags($_POST['content']);
-                $id_post = $post->id;
+                $id_post = $id;
 
                 //On instancie notre modèle
                 $comment = new CommentsModel;
@@ -81,17 +67,35 @@ class PostsController extends Controller
                                 ->setId_post($id_post);
 
                 $comment->create();
+                header('Location: /posts');
 
-                //On redirige
-                header("Location: /posts/single");
-                exit;
+            }else{
+                //le formulaire est incomplet
             }
+            $post = $postsModel->find($id);
+            $comments = $commentsModel->findBy(array('id_post' => $id));
+    
+            //On envoie à la vue
+
         }else{
 
+            //L'utilisateur n'est pas connecté
+            header("Location: /users/login");
+            exit;
         }
+         //On crée le formulaire
+         $form = new Form;
+
+         $form->debutForm()
+                 ->ajoutLabelFor('content', 'Ajoutez un commentaire')
+                 ->ajoutTextarea('content','', ['id'=>'content', 'class'=> 'form-control'])
+                 ->ajoutBouton('Ajouter', ['class'=>'btn btn-primary'])
+                 ->finForm();
+
+                 $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
+
     }
 
-    
     /**
      * Ajouter une annonce
      *

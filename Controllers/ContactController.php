@@ -18,6 +18,6 @@ class ContactController extends Controller
                 ->ajoutBouton('Envoyer', ['class'=> 'btn btn-primary'])
                 ->finForm();
 
-                $this->render('/contact', ['contactForm' => $form->create()]);
+                $this->render('contact/index', ['form' => $form->create()]);
     }
 }
