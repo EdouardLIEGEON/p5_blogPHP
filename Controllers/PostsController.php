@@ -93,7 +93,6 @@ class PostsController extends Controller
                  ->finForm();
 
                  $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
-
     }
 
     /**

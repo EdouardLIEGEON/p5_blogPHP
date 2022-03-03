@@ -284,6 +284,9 @@ input::placeholder, textarea::placeholder{
   padding-bottom: 10px;
   text-align: start;
 }
+label{
+  margin-top: 2em;
+}
 .btn-form{
   font-family: lazer;
   background: #f00020;
