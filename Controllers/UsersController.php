@@ -64,7 +64,7 @@ class UsersController extends Controller
         if(Form::validate($_POST, ['name', 'password'])){
             //Le formulaire est valide
             //On nettoie le Name
-            $name = strip_tags($_POST['name']);
+            $name = strip_tags(htmlspecialchars($_POST['name']));
 
             //On chiffre le mdp
             $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
