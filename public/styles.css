@@ -249,6 +249,28 @@ h5, .h5 {
 h6, .h6 {
   font-size: 1rem;
 }
+@media(max-width:768px){
+  h2, h3{
+    font-size: 40px;
+  }
+  .section-heading-upper, .section-heading-lower{
+    font-size: 20px;
+  }
+  p, .mb-3{
+    font-size: 16px !important;
+  }
+  .p-5{
+    padding: 2rem 1rem !important;
+  }
+}
+@media(max-width: 450px){
+  h2, h3{
+    font-size: 30px;
+  }
+  p, .mb-3{
+    font-size: 14px !important;
+  }
+}
 
 p {
   margin-top: 0;
@@ -7578,7 +7600,7 @@ textarea.form-control-lg {
 }
 
 .p-5 {
-  padding: 3rem !important;
+  padding: 3rem;
 }
 
 .px-0 {

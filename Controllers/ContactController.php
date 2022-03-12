@@ -30,7 +30,9 @@ class ContactController extends Controller
             "Nom : $name". "\r\n".
             "Email : $email". "\r\n".
             "Message : $message";
-            if(preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/", $email) && preg_match("/^[a-zA-Z]/", $name, $message)){
+
+            // if(preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/", $email) && preg_match("/^[a-zA-Z]/", $name, $message)){
+                
             //On envoie le contenu du formulaire sur l'adresse mail
             $sendMail = mail('edouard.liegeon@gmail.com', 'Message du site p5_blogphp.test', $contact);
             }

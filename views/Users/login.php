@@ -9,6 +9,7 @@
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
                                 <?= $loginForm ?> 
+                                <p>Pas encore de compte utilisateur ?<a href="/users/register">M'inscrire</a></p>
                             </div>
                         </div>
                     </div>

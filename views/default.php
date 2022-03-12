@@ -40,8 +40,9 @@
                                 <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="/users/login">Se connecter</a></li>
                                 <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="/users/register">S"inscrire</a></li>
                                 <?php endif; ?>
-                                <li><a href="https://www.linkedin.com/in/edouardliegeon/"><img src="/images/linkedin.png" width="30px" height="30px" alt="Logo Linkedin"></a></li>
-                    </ul>
+                                <li><a target="_blank" href="https://www.linkedin.com/in/edouardliegeon/"><img src="/images/linkedin.png" width="30px" height="30px" alt="Logo Linkedin"></a></li>
+                                <li><a target="_blank" href="https://github.com/EdouardLIEGEON/"><img src="/images/github.png" width="30px" height="30px" alt="Logo Linkedin"></a></li>
+                            </ul>
                 </div>
         </nav>
 <body>
@@ -51,7 +52,7 @@
     
 </body>
 <footer class="footer text-faded">
-            <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])): ?>
+            <?php if(isset($_SESSION['user']) && ($_SESSION['user']['name']==='Admin')): ?>
                 <a target="blank" class="nav-link text-uppercase" href="/posts/admin">Admin</a>
             <?php else: ?>
             <?php endif ?>

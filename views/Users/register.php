@@ -9,7 +9,7 @@
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
                                 <?= $registerForm ?>
-                                <a href="/users/login">Déjà inscrit ? Me connecter</a>
+                                <p>Déjà inscrit ? <a href="/users/login">Me connecter</a></p>
                             </div>
                         </div>
                     </div>

@@ -75,7 +75,6 @@ class PostsController extends Controller
             $post = $postsModel->find($id);
             $comments = $commentsModel->findBy(array('id_post' => $id));
     
-            //On envoie à la vue
 
         }else{
 
@@ -92,6 +91,7 @@ class PostsController extends Controller
                  ->ajoutBouton('Ajouter', ['class'=>'btn btn-primary'])
                  ->finForm();
 
+                 //On enoie à la vue
                  $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
     }
 
