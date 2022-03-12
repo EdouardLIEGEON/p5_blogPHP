@@ -64,14 +64,16 @@ class UsersController extends Controller
      */
     public function register()
     {
+        $globals = new Globals;
+        $post = $globals->getPOST();
         //On vérifie si le formulaire est valide
         if(Form::validate($_POST, ['name', 'password'])){
             //Le formulaire est valide
             //On nettoie le Name
-            $name = strip_tags(htmlspecialchars($_POST['name']));
+            $name = strip_tags(htmlspecialchars($post['name']));
 
             //On chiffre le mdp
-            $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
+            $password = password_hash($post['password'], PASSWORD_ARGON2I);
 
             //On hydrate l'utilisateur en bdd
             $user = new UsersModel;
