@@ -35,7 +35,6 @@ class ContactController extends Controller
                 
             //On envoie le contenu du formulaire sur l'adresse mail
             $sendMail = mail('edouard.liegeon@gmail.com', 'Message du site p5_blogphp.test', $contact);
-            }
         }
     }
 }

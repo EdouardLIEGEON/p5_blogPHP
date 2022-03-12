@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Core\Form;
 use App\Models\UsersModel;
+use App\Globals\Globals;
 
 class UsersController extends Controller
 {
@@ -14,12 +15,15 @@ class UsersController extends Controller
      */
     public function login()
     {
+        $globals = new Globals;
+        $post = $globals->getPOST();
+
         //On vérifie si le formulaire est complet
         if(Form::validate($_POST, ['name', 'password'])){
             //Le formulaire est complet
             //On va chercher dans la bdd l'utilisateur avec l'email entré
             $usersModel = new UsersModel;
-            $userArray = $usersModel->findOneByName(strip_tags($_POST['name']));
+            $userArray = $usersModel->findOneByName(strip_tags($post['name']));
             //Si l'utilisateur n'existe pas
             if(!$userArray){
                 //On envoie un message de session
@@ -31,7 +35,7 @@ class UsersController extends Controller
             $user = $usersModel->hydrate($userArray);
 
             //On vérifie que le mot de passe est correct
-            if(password_verify($_POST['password'], $user->getPassword())){
+            if(password_verify($post['password'], $user->getPassword())){
                 //Le mot de passe est bon
                 //On crée la session
                 $user->setSession();
