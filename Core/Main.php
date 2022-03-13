@@ -1,16 +1,21 @@
 <?php
 namespace App\Core;
 use App\Controllers\MainController;
+use App\Globals\Globals;
 
 class Main
 {
     public function start()
     {
+        $globals = new Globals;
+        $server = $globals->getSERVER();
+        $get = $globals->getGET();
+
         //On démarre la session//
         session_start();
 
         // On récupère l'adresse
-        $uri = $_SERVER['REQUEST_URI'];
+        $uri = $server['REQUEST_URI'];
 
         // On vérifie si elle n'est pas vide et si elle se termine par un /
         if(!empty($uri) && $uri != '/' && $uri[-1] === '/'){
@@ -24,7 +29,7 @@ class Main
             header('Location: '.$uri);
         }
         // On sépare les paramètres et on les met dans le tableau $params
-        $params = explode('/', $_GET['p']);
+        $params = explode('/', $get['p']);
 
         // Si au moins 1 paramètre existe
         if($params[0] != ""){
