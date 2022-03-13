@@ -16,14 +16,14 @@ class UsersController extends Controller
     public function login()
     {
         $globals = new Globals;
-        $post = $globals->getPOST();
+        $post_global = $globals->getPOST();
 
         //On vérifie si le formulaire est complet
         if(Form::validate($_POST, ['name', 'password'])){
             //Le formulaire est complet
             //On va chercher dans la bdd l'utilisateur avec l'email entré
             $usersModel = new UsersModel;
-            $userArray = $usersModel->findOneByName(strip_tags($post['name']));
+            $userArray = $usersModel->findOneByName(strip_tags($post_global['name']));
             //Si l'utilisateur n'existe pas
             if(!$userArray){
                 //On envoie un message de session
@@ -35,7 +35,7 @@ class UsersController extends Controller
             $user = $usersModel->hydrate($userArray);
 
             //On vérifie que le mot de passe est correct
-            if(password_verify($post['password'], $user->getPassword())){
+            if(password_verify($post_global['password'], $user->getPassword())){
                 //Le mot de passe est bon
                 //On crée la session
                 $user->setSession();
@@ -65,16 +65,16 @@ class UsersController extends Controller
     public function register()
     {
         $globals = new Globals;
-        $post = $globals->getPOST();
+        $post_global = $globals->getPOST();
 
         //On vérifie si le formulaire est valide
         if(Form::validate($_POST, ['name', 'password'])){
             //Le formulaire est valide
             //On nettoie le Name
-            $name = strip_tags(htmlspecialchars($post['name']));
+            $name = strip_tags(htmlspecialchars($post_global['name']));
 
             //On chiffre le mdp
-            $password = password_hash($post['password'], PASSWORD_ARGON2I);
+            $password = password_hash($post_global['password'], PASSWORD_ARGON2I);
 
             //On hydrate l'utilisateur en bdd
             $user = new UsersModel;

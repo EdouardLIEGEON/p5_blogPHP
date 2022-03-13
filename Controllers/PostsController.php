@@ -50,7 +50,7 @@ class PostsController extends Controller
         $postsModel = new PostsModel;
         $commentsModel = new CommentsModel;
         $globals = new Globals;
-        $post = $globals->getPOST();
+        $post_global = $globals->getPOST();
 
         //On vérifie que l'utilisateur est bien connecté
         if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])){
@@ -58,7 +58,7 @@ class PostsController extends Controller
             //On vérifie si le formulaire est complet
             if(Form::validate($_POST, ['content'])){
                 //On se protège contre les failles xss
-                $content = strip_tags($post['content']);
+                $content = strip_tags($post_global['content']);
                 $id_post = $id;
 
                 //On instancie notre modèle
@@ -107,15 +107,15 @@ class PostsController extends Controller
     public function ajouter()
     {
         $globals = new Globals;
-        $post = $globals->getPOST();
+        $post_global = $globals->getPOST();
         //On vérifie que le formulaire est complet
         if(Form::validate($_POST, ['title', 'content'])){
             //Le formulaire est complet
             //On se protège contre les failles xss
             //strip_tags, htmlentities, htmlspecialchars
-            $title = strip_tags($post['title']);
-            $content = strip_tags($post['content']);
-            $subTitle = strip_tags($post['subTitle']);
+            $title = strip_tags($post_global['title']);
+            $content = strip_tags($post_global['content']);
+            $subTitle = strip_tags($post_global['subTitle']);
 
             //On instancie notre modèle
             $post = new PostsModel;
@@ -159,7 +159,7 @@ class PostsController extends Controller
      */
     public function modifier(int $id){
         $globals = new Globals;
-        $post = $globals->getPOST();
+        $post_global = $globals->getPOST();
         //On vérifie si l'annonce existe dans la bdd
         //On instancie le model
         $postModel = new PostsModel;
@@ -178,9 +178,9 @@ class PostsController extends Controller
         //On traite le formulaire
         if(Form::validate($_POST, ['title','content'])){
             //On se protège des failles xss
-            $title = strip_tags($post['title']);
-            $content = strip_tags($post['content']);
-            $subTitle = strip_tags($post['subTitle']);
+            $title = strip_tags($post_global['title']);
+            $content = strip_tags($post_global['content']);
+            $subTitle = strip_tags($post_global['subTitle']);
 
             //On stocke l'annonce
             $postModif = new PostsModel;
