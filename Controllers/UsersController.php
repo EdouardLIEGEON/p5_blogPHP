@@ -66,6 +66,7 @@ class UsersController extends Controller
     {
         $globals = new Globals;
         $post = $globals->getPOST();
+
         //On vérifie si le formulaire est valide
         if(Form::validate($_POST, ['name', 'password'])){
             //Le formulaire est valide
@@ -102,8 +103,11 @@ class UsersController extends Controller
 
     //Déconnecte l'utilisateur
     public function logout(){
+        $globals = new Globals;
+        $server = $globals->getSERVER();
+
         unset($_SESSION['user']);
-        header('Location:' . $_SERVER['HTTP_REFERER']);
+        header('Location:' . $server['HTTP_REFERER']);
         exit;
     }
 
