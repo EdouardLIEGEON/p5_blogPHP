@@ -107,7 +107,6 @@ class UsersController extends Controller
 
         unset($_SESSION['user']);
         header('Location:' . $server['HTTP_REFERER']);
-        exit;
     }
 
 }

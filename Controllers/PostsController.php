@@ -123,7 +123,6 @@ class PostsController extends Controller
 
             //On redirige
             header ('Location: /posts/admin');
-            exit;
         }else{
             //Le formulaire est incomplet
         }
@@ -164,7 +163,6 @@ class PostsController extends Controller
             http_response_code(404);
             $_SESSION['erreur'] = "Le post recherché n'existe pas";
             header('Location: /admin');
-            exit;
         }
 
         //On traite le formulaire
@@ -187,7 +185,6 @@ class PostsController extends Controller
 
             //On redirige
             header ('Location: /posts/admin');
-            exit;
         }
 
         $form = new Form;
