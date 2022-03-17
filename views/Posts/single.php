@@ -15,11 +15,14 @@
                                 <p><strong><?= $comment->author ?></strong></p>
                                 <p><?= $comment->content ?></p>
                                 <span class="little_p">le <?= $comment->date ?></span><br>
-                                ________
+                                ____________________
                                 <?php endforeach ?>
                             </div>
                             <div class="col-md-6">
-                                <?= $form ?> 
+
+                            <!--On vérifie que l'utilisateur est bien connecté-->
+                                <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])){
+                                echo $form; }?> 
                             </div>   
                         </div>
                     </div>

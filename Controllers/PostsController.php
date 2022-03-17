@@ -52,8 +52,6 @@ class PostsController extends Controller
         $globals = new Globals;
         $post_global = $globals->getPOST();
 
-        //On vérifie que l'utilisateur est bien connecté
-        if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])){
             //L'utilisateur est connecté
             //On vérifie si le formulaire est complet
             if(Form::validate($post_global, ['content'])){
@@ -79,13 +77,7 @@ class PostsController extends Controller
             $post = $postsModel->find($id);
             $comments = $commentsModel->findBy(array('id_post' => $id));
     
-
-        }else{
-
-            //L'utilisateur n'est pas connecté
-            header("Location: /users/login");
-            exit;
-        }
+       //On vérifie que l'utilisateur est bien connecté
          //On crée le formulaire
          $form = new Form;
 

@@ -4,6 +4,7 @@ namespace App\Globals;
 class Globals{
     private $_POST;
     private $_SERVER;
+    private $_GET;
 
     public function __construct()
     {

@@ -187,7 +187,9 @@ img .header{
 width: 1000px;
 height: 500px;
 }
-
+h3 .section-heading-upper{
+  font-size: 25px;
+}
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -205,6 +207,8 @@ h2, .h2 {
   text-align: center;
   color: #ffff;
   padding: 30px 0;
+  font-weight: 400;
+  font-size: 25px;
 }
 
 @media (min-width: 1200px) {
@@ -11498,7 +11502,8 @@ p {
 }
 .section-heading .section-heading-upper {
   display: block;
-  font-weight: 800;
+  font-weight: 500;
+  font-size:25px;
 }
 .section-heading .section-heading-lower {
   display: block;

@@ -29,7 +29,6 @@ class UsersController extends Controller
                 //On envoie un message de session
                 $_SESSION['erreur'] = "Le nom et/ou le mot de passe est incorrect";
                 header('Location: /users/login');
-                exit;
             }
             //L'utilisateur existe
             $user = $usersModel->hydrate($userArray);
