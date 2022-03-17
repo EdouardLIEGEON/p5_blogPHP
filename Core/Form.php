@@ -23,7 +23,7 @@ class Form
      * @param array $champs Tableau listant les champs obligatoires
      * @return bool
      */
-    public static function validate(array $form, array $champs)
+    public static function validate( $form, $champs)
     {
         //On parcourt les champs
         foreach($champs as $champ){

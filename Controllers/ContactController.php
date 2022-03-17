@@ -11,7 +11,7 @@ class ContactController extends Controller
         //On créé le formulaire
         $form = new Form;
         $globals = new Globals;
-        $post = $globals->getPOST();
+        $post_global = $globals->getPOST();
 
         $form->debutForm()
                 ->ajoutLabelFor('name', 'Nom et Prénom :')
@@ -27,10 +27,10 @@ class ContactController extends Controller
                 $this->render('contact/index', ['form' => $form->create()]);
 
         //On vérifie si le formulaire est complet
-        if(Form::validate($_POST, ['name', 'email', 'message'])){
-            $name = strip_tags($post['name']);
-            $email = strip_tags($post['email']);
-            $message = strip_tags($post['message']);
+        if(Form::validate($post_global, ['name', 'email', 'message'])){
+            $name = strip_tags($post_global['name']);
+            $email = strip_tags($post_global['email']);
+            $message = strip_tags($post_global['message']);
             $contact = "Ce message est envoyé depuis le site p5_blogPHP.test". "\r\n".
             "Nom : $name". "\r\n".
             "Email : $email". "\r\n".

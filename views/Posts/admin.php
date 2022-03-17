@@ -12,8 +12,8 @@
                             <p class="sousTitre"><?= $post->subTitle ?></p><br>    
                             <p><?= $post->content ?></p>    
                             <p>Modifié le <?= $post->date ?></p>    
-                            <button class="btn-projects"><a href="/posts/modifier/<?= $post->id ?>" target="_blank">Modifier le projet</a></button><br><br>
-                            <button class="btn-projects"><a href="/posts/supprimer/<?= $post->id ?>" target="_blank">Supprimer le projet</a></button>
+                            <button class="btn-projects"><a href="/posts/modifier/<?= $post->id ?>">Modifier le projet</a></button><br><br>
+                            <button class="btn-projects"><a href="/posts/supprimer/<?= $post->id ?>">Supprimer le projet</a></button>
                         </div>
                     </div>
                 </div>
