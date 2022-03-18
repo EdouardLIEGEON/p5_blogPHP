@@ -7,11 +7,11 @@
                     <div class="col-md-6 mx-auto">
                         <div class="bg-faded rounded p-5 m-auto" style="height: 400px;">
                             <h3 class="section-heading mb-0">
-                                <span class="section-heading-upper"><?= htmlentities($post->title) ?></span>
+                                <span class="section-heading-upper"><?php print_r(htmlentities($post->title)) ?></span>
                             </h3><br>
-                            <p class="sousTitre"><?= htmlentities($post->subTitle) ?></p><br>             
-                            <button class="btn-projects"><a href="/posts/single/<?= htmlentities($post->id) ?>" target="blank">En savoir plus</a></button><br>
-                            <p class="sousTitre">Date de modification : <?= htmlentities($post->date) ?></p>
+                            <p class="sousTitre"><?php print_r(htmlentities($post->subTitle)) ?></p><br>             
+                            <button class="btn-projects"><a href="/posts/single/<?php print_r(htmlentities($post->id)) ?>" target="blank">En savoir plus</a></button><br>
+                            <p class="sousTitre">Date de modification : <?php print_r(htmlentities($post->date)) ?></p>
                         </div>
                     </div>
                     <?php endforeach ?>
