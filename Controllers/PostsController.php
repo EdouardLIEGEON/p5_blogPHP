@@ -161,7 +161,6 @@ class PostsController extends Controller
         //Si l'annonce n'existe pas, on retourne à la liste des annonces
         if(!$post){
             http_response_code(404);
-            $_SESSION['erreur'] = "Le post recherché n'existe pas";
             header('Location: /admin');
         }
 

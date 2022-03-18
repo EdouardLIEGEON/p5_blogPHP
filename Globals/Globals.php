@@ -5,7 +5,6 @@ class Globals{
     private $_POST;
     private $_SERVER;
     private $_GET;
-    private $_SESSION;
 
     public function __construct()
     {

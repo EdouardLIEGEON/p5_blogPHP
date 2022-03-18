@@ -27,7 +27,6 @@ class UsersController extends Controller
             //Si l'utilisateur n'existe pas
             if(!$userArray){
                 //On envoie un message de session
-                $_SESSION['erreur'] = "Le nom et/ou le mot de passe est incorrect";
                 header('Location: /users/login');
             }
             //L'utilisateur existe
