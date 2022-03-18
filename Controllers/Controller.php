@@ -13,14 +13,11 @@ class Controller
         //A partir de ce point, toute sortie est conservée en mémoire
 
         //On crée le chemin vers la vue
-        include_once  '../Views/'. $fichier. '.php';
+        include_once  ROOT. '/Views/'. $fichier. '.php';
 
         //On transfère le buffer dans $contenu
         $content = ob_get_clean();
 
-        include_once  '../Views/default.php';
-
-
-
+        include_once  ROOT. '/Views/default.php';
     }
 }
