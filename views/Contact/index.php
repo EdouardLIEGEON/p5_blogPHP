@@ -8,7 +8,7 @@
                             </h2>
                             <? $success ?>
                             <div id="box">
-                               <?= $form ?>
+                               <?php print_r( $form )?>
                             </div>
                         </div>
                     </div>
