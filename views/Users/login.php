@@ -8,7 +8,7 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <?php print($loginForm) ?> 
+                                <?php print_r($loginForm) ?> 
                                 <p>Pas encore de compte utilisateur ?<a href="/users/register">M'inscrire</a></p>
                             </div>
                         </div>

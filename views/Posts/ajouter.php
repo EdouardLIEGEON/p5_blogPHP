@@ -8,7 +8,7 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <?php print($form) ?>
+                                <?php print_r($form) ?>
                             </div>
                         </div>
                     </div>
