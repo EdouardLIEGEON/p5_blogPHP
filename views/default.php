@@ -47,7 +47,7 @@
         </nav>
 <body>
     <div class="container">
-        <?= $content ?>
+        <?php print_r($content) ?>
     </div>
     
 </body>

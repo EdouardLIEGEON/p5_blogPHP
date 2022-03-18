@@ -7,7 +7,7 @@
                                 <span class="section-heading-lower">Contactez-moi</span>
                             </h2>
                             <div id="box">
-                               <?= print_r($form) ?>
+                               <?php print_r($form) ?>
                             </div>
                         </div>
                     </div>
