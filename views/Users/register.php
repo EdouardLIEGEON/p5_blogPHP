@@ -8,7 +8,7 @@
                     <div class="col-xl-9 mx-auto">
                         <div class="cta-inner bg-faded text-center rounded">
                             <div id="box">
-                                <?= $registerForm ?>
+                                <?php print($registerForm) ?>
                                 <p>Déjà inscrit ? <a href="/users/login">Me connecter</a></p>
                             </div>
                         </div>

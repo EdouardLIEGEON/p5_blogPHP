@@ -1,4 +1,4 @@
-<h2><?= $post->title ?></h2>
+<h2><?php print_r(htmlentities($post->title)) ?></h2>
     <section class="page-section about-heading">
         <div class="container">
             <div class="about-heading-content">

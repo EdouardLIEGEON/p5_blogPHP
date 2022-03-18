@@ -3,7 +3,7 @@
         <h2 class="section-heading mb-0">
                                 Modifier un post
                             </h2><br>
-                            <?= $form ?>
+                            <?php print($form) ?>
         </header>
 
         
