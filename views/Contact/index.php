@@ -6,9 +6,8 @@
                             <h2 class="section-heading mb-5">
                                 <span class="section-heading-lower">Contactez-moi</span>
                             </h2>
-                            <? $success ?>
                             <div id="box">
-                               <?= $form ?>
+                               <?= print_r($form) ?>
                             </div>
                         </div>
                     </div>
