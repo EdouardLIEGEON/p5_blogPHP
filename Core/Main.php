@@ -48,7 +48,7 @@ class Main
             }else{
                 // On envoie le code réponse 404
                 http_response_code(404);
-                echo "La page recherchée n'existe pas";
+                print_r( "La page recherchée n'existe pas");
             }
         }else{
             // Ici aucun paramètre n'est défini

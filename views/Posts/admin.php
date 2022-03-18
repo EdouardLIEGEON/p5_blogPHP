@@ -10,7 +10,7 @@
                                 <span class="section-heading-upper"><?= $post->title ?></span>
                             </h3><br>
                             <p class="sousTitre"><?= $post->subTitle ?></p><br>    
-                            <p><?= $post->content ?></p>    
+                            <p><?= $post->content  ?></p>    
                             <p>Modifié le <?= $post->date ?></p>    
                             <button class="btn-projects"><a href="/posts/modifier/<?= $post->id ?>">Modifier le projet</a></button><br><br>
                             <button class="btn-projects"><a href="/posts/supprimer/<?= $post->id ?>">Supprimer le projet</a></button>
