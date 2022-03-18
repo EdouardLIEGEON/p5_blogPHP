@@ -25,7 +25,7 @@ class Autoloader
         $fichier =  __DIR__ . '/' . $class . '.php';
         //On vérifie si le fichier existe
         if (file_exists($fichier)) {
-            include_once $fichier;
+            include_once($fichier);
         }
     }
 }
