@@ -18,7 +18,7 @@ class Main
         $uri = $server['REQUEST_URI'];
 
         // On vérifie si elle n'est pas vide et si elle se termine par un /
-        if(!empty($uri) && $uri != '/' && $uri[-1] === '/'){
+        if (!empty($uri) && $uri != '/' && $uri[-1] === '/') {
         // Dans ce cas on enlève le /
             $uri = substr($uri, 0, -1);
 
@@ -32,7 +32,7 @@ class Main
         $params = explode('/', $get['p']);
 
         // Si au moins 1 paramètre existe
-        if($params[0] != ""){
+        if ($params[0] != "") {
             // On sauvegarde le 1er paramètre dans $controller en mettant sa 1ère lettre en majuscule, en ajoutant le namespace des controleurs et en ajoutant "Controller" à la fin
             $controller = '\\App\\Controllers\\'.ucfirst(array_shift($params)).'Controller';
 
@@ -42,15 +42,15 @@ class Main
             // On instancie le contrôleur
             $controller = new $controller();
 
-            if(method_exists($controller, $action)){
+            if (method_exists($controller, $action)) {
                 // Si il reste des paramètres, on appelle la méthode en envoyant les paramètres sinon on l'appelle "à vide"
                 (isset($params[0])) ? call_user_func_array([$controller, $action], $params) : $controller->$action();    
-            }else{
+            } else {
                 // On envoie le code réponse 404
                 http_response_code(404);
                 print_r( "La page recherchée n'existe pas");
             }
-        }else{
+        } else {
             // Ici aucun paramètre n'est défini
             // On instancie le contrôleur par défaut (page d'accueil)
             $controller = new MainController;

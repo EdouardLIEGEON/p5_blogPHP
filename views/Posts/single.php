@@ -21,8 +21,9 @@
                             <div class="col-md-6">
 
                             <!--On vérifie que l'utilisateur est bien connecté-->
-                                <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])){
-                                print_r( $form); }?> 
+                                <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']['id'])) {
+                                print_r( $form); 
+                                }?> 
                             </div>   
                         </div>
                     </div>

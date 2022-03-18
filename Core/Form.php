@@ -26,9 +26,9 @@ class Form
     public static function validate( $form, $champs)
     {
         //On parcourt les champs
-        foreach($champs as $champ){
+        foreach ($champs as $champ) {
             //Si le champs est absent ou vide dans le form
-            if(!isset($form[$champ]) || empty($form[$champ])){
+            if (!isset($form[$champ]) || empty($form[$champ])) {
                 //On sort en retournant false
                 return false;
             }
@@ -51,11 +51,11 @@ class Form
         $courts = ['checked', 'disabled', 'redonly', 'multiple', 'required', 'autofocus', 'novalidate', 'formnovalidate'];
 
         //On boucle sur le tableau d'attributs
-        foreach($attributs as $attribut => $valeur){
+        foreach ($attributs as $attribut => $valeur) {
             //Si l'attribut est dans la liste des attributs courts
-            if(in_array($attribut, $courts) && $valeur == true){
+            if (in_array($attribut, $courts) && $valeur == true) {
                 $str .= " $attribut";
-            }else{
+            } else {
                 //On ajoute attribut= 'valeur'
                 $str .= " $attribut=\"$valeur\"";
             }
@@ -147,7 +147,7 @@ class Form
         //On ajoute les attributs
         $this->formCode .= $attributs ? $this->ajoutAttributs($attributs). '>' : '>';
 
-        foreach($options as $valeur => $texte){
+        foreach ($options as $valeur => $texte) {
             $this->formCode .= "<option value=\"$valeur\">$texte</option>";
         }
 

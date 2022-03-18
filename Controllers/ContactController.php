@@ -7,7 +7,8 @@ use App\Globals\Globals;
 class ContactController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         //On créé le formulaire
         $form = new Form;
         $globals = new Globals;
@@ -27,7 +28,7 @@ class ContactController extends Controller
                 $this->render('contact/index', ['form' => $form->create()]);
 
         //On vérifie si le formulaire est complet
-        if(Form::validate($post_global, ['name', 'email', 'message'])){
+        if(Form::validate($post_global, ['name', 'email', 'message'])) {
             $name = strip_tags($post_global['name']);
             $email = strip_tags($post_global['email']);
             $message = strip_tags($post_global['message']);

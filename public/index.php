@@ -8,7 +8,7 @@ define('ROOT', dirname(__DIR__));
 // On importe les namespaces nécessaires
 
 // On importe l'Autoloader
-include_once ROOT. '/Autoloader.php';
+require_once ROOT. '/Autoloader.php';
 Autoloader::register();
 
 // On instancie Main

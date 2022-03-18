@@ -34,7 +34,7 @@
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/contact">Me contacter</a></li>
                     </ul>
                     <ul class="navbar-nav mx-auto">
-                        <?php if(isset($_SESSION['user']) && !empty($_SESSION['user']['id'])): ?>
+                        <?php if (isset($_SESSION['user']) && !empty($_SESSION['user']['id'])) : ?>
                             <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/users/logout">Se déconnecter</a></li>
                             <?php else: ?>
                                 <li class="nav-item px-lg-4"><a target="blank" class="nav-link text-uppercase" href="/users/login">Se connecter</a></li>
@@ -52,7 +52,7 @@
     
 </body>
 <footer class="footer text-faded">
-            <?php if(isset($_SESSION['user']) && ($_SESSION['user']['name']==='Admin')): ?>
+            <?php if (isset($_SESSION['user']) && ($_SESSION['user']['name']==='Admin')) : ?>
                 <a target="blank" class="nav-link text-uppercase" href="/posts/admin">Admin</a>
             <?php else: ?>
             <?php endif ?>

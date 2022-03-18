@@ -19,13 +19,13 @@ class UsersController extends Controller
         $post_global = $globals->getPOST();
 
         //On vérifie si le formulaire est complet
-        if(Form::validate($post_global, ['name', 'password'])){
+        if (Form::validate($post_global, ['name', 'password'])) {
             //Le formulaire est complet
             //On va chercher dans la bdd l'utilisateur avec l'email entré
             $usersModel = new UsersModel;
             $userArray = $usersModel->findOneByName(strip_tags($post_global['name']));
             //Si l'utilisateur n'existe pas
-            if(!$userArray){
+            if (!$userArray) {
                 //On envoie un message de session
                 header('Location: /users/login');
             }
@@ -33,7 +33,7 @@ class UsersController extends Controller
             $user = $usersModel->hydrate($userArray);
 
             //On vérifie que le mot de passe est correct
-            if(password_verify($post_global['password'], $user->getPassword())){
+            if (password_verify($post_global['password'], $user->getPassword())) {
                 //Le mot de passe est bon
                 //On crée la session
                 $user->setSession();
@@ -44,12 +44,12 @@ class UsersController extends Controller
         $form = new Form;
 
         $form->debutForm()
-                ->ajoutLabelFor('name', 'Nom :' )
-                ->ajoutInput('name', 'name', ['class' => 'form-control', 'id' =>'name'])
-                ->ajoutLabelFor('pass', 'Mot de passe :')
-                ->ajoutInput('password', 'password', ['id'=> 'pass', 'class'=> 'form-control'])
-                ->ajoutBouton('Me connecter', ['class' => 'btn btn-primary'])
-                ->finForm();
+            ->ajoutLabelFor('name', 'Nom :' )
+            ->ajoutInput('name', 'name', ['class' => 'form-control', 'id' =>'name'])
+            ->ajoutLabelFor('pass', 'Mot de passe :')
+            ->ajoutInput('password', 'password', ['id'=> 'pass', 'class'=> 'form-control'])
+            ->ajoutBouton('Me connecter', ['class' => 'btn btn-primary'])
+            ->finForm();
 
         $this->render('users/login', ['loginForm'=> $form->create()]);
 
@@ -66,7 +66,7 @@ class UsersController extends Controller
         $post_global = $globals->getPOST();
 
         //On vérifie si le formulaire est valide
-        if(Form::validate($post_global, ['name', 'password'])){
+        if (Form::validate($post_global, ['name', 'password'])) {
             //Le formulaire est valide
             //On nettoie le Name
             $name = strip_tags(htmlspecialchars($post_global['name']));
@@ -78,29 +78,30 @@ class UsersController extends Controller
             $user = new UsersModel;
 
             $user->setName($name)
-                    ->setPassword($password);
+                ->setPassword($password);
             
                     //On stocke l'utilisateur
                     $user->create(); 
-        }else{
+        } else {
 
             $errorValidateForm = "Veuillez renseigner un Nom et un Mot de passe svp";
         }
         $form = new Form;
 
         $form->debutForm()
-                ->ajoutLabelFor('name', 'Nom :')
-                ->ajoutInput('name', 'name', ['id'=> 'name', 'class'=> 'form-control'])
-                ->ajoutLabelFor('pass', 'Mot de passe :')
-                ->ajoutInput('password', 'password', ['id'=> 'password', 'class'=> 'form-control'])
-                ->ajoutBouton('M\'inscrire', ['class'=> 'btn btn-primary'])
-                ->finForm();
+            ->ajoutLabelFor('name', 'Nom :')
+            ->ajoutInput('name', 'name', ['id'=> 'name', 'class'=> 'form-control'])
+            ->ajoutLabelFor('pass', 'Mot de passe :')
+            ->ajoutInput('password', 'password', ['id'=> 'password', 'class'=> 'form-control'])
+            ->ajoutBouton('M\'inscrire', ['class'=> 'btn btn-primary'])
+            ->finForm();
 
                 $this->render('users/register', ['registerForm' => $form->create()]);
     }
 
     //Déconnecte l'utilisateur
-    public function logout(){
+    public function logout()
+    {
         $globals = new Globals;
         $server = $globals->getSERVER();
 

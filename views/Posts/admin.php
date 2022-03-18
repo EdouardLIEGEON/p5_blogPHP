@@ -16,7 +16,7 @@
                             <button class="btn-projects"><a href="/posts/supprimer/<?php print_r($post->id) ?>">Supprimer le projet</a></button>
                         </div>
                     </div>
-                    <?php endforeach ?>
+                <?php endforeach ?>
                 </div>
             </div>
         </div>

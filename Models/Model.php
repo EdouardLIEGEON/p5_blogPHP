@@ -10,27 +10,29 @@ class Model extends Db
 
     // Instance de connexion
     private $db;
+
     /**
- * Sélection de tous les enregistrements d'une table
- * @return array Tableau des enregistrements trouvés
- */
+    * Sélection de tous les enregistrements d'une table
+    * @return array Tableau des enregistrements trouvés
+    */
     public function findAll()
     {
         $query = $this->requete('SELECT * FROM '.$this->table);
         return $query->fetchAll();
     }
+
     /**
- * Sélection de plusieurs enregistrements suivant un tableau de critères
- * @param array $criteres Tableau de critères
- * @return array Tableau des enregistrements trouvés
- */
+    * Sélection de plusieurs enregistrements suivant un tableau de critères
+    * @param array $criteres Tableau de critères
+    * @return array Tableau des enregistrements trouvés
+    */
     public function findBy(array $criteres)
     {
         $champs = [];
         $valeurs = [];
 
         // On boucle pour "éclater le tableau"
-        foreach($criteres as $champ => $valeur){
+        foreach ($criteres as $champ => $valeur) {
             $champs[] = "$champ = ?";
             $valeurs[]= $valeur;
         }
@@ -46,6 +48,7 @@ class Model extends Db
     {
         return $this->requete("SELECT * FROM {$this->table} WHERE id = $id")->fetch();
     }
+
     // Méthode pour créer les posts
     public function create()
     {
@@ -54,9 +57,9 @@ class Model extends Db
         $valeurs = [];
 
         // On boucle pour éclater le tableau
-        foreach($this as $champ => $valeur){
+        foreach ($this as $champ => $valeur) {
             // INSERT INTO posts (titre, description, ....) VALUES (?, ?, ?)
-            if($valeur !== null && $champ != 'db' && $champ != 'table'){
+            if ($valeur !== null && $champ != 'db' && $champ != 'table') {
                 $champs[] = $champ;
                 $inter[] = "?";
                 $valeurs[] = $valeur; 
@@ -71,16 +74,16 @@ class Model extends Db
         return $this->requete('INSERT INTO '.$this->table.' ('. $liste_champs.')VALUES('.$liste_inter.')', $valeurs);
     }
 
-        // Méthode pour modifier les posts
+    // Méthode pour modifier les posts
     public function update()
     {
         $champs = [];
         $valeurs = [];
 
         // On boucle pour éclater le tableau
-        foreach($this as $champ => $valeur){
+        foreach ($this as $champ => $valeur) {
             // UPDATE posts SET titre=?, description=?, ....) WHERE id= ?
-            if($valeur !== null && $champ != 'db' && $champ != 'table'){
+            if ($valeur !== null && $champ != 'db' && $champ != 'table') {
                 $champs[] = "$champ = ?";
                 $valeurs[] = $valeur; 
             }
@@ -110,12 +113,12 @@ class Model extends Db
         $this->db = Db::getInstance();
 
         // On vérifie si on a des attributs
-        if($attributs !== null){
+        if ($attributs !== null) {
             // Requête préparée
             $query = $this->db->prepare($sql);
             $query->execute($attributs);
             return $query;
-        }else{
+        } else {
             // Requête simple
             return $this->db->query($sql);
         }
@@ -123,13 +126,13 @@ class Model extends Db
     
     public function hydrate($donnees)
     {
-        foreach($donnees as $key => $value){
+        foreach ($donnees as $key => $value) {
             //On récupère le nom du setter correspondant à la clé
             // title -> setTitle
             $setter = 'set' . ucfirst($key);
 
             //On vérifie si le setter existe
-            if(method_exists($this, $setter)){
+            if (method_exists($this, $setter)) {
                 //On appelle le setter
                 $this->$setter($value);
             }

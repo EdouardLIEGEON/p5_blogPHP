@@ -54,41 +54,41 @@ class PostsController extends Controller
 
             //L'utilisateur est connecté
             //On vérifie si le formulaire est complet
-            if(Form::validate($post_global, ['content'])){
-                //On se protège contre les failles xss
-                $content = strip_tags($post_global['content']);
-                $id_post = $id;
+        if (Form::validate($post_global, ['content'])) {
+            //On se protège contre les failles xss
+            $content = strip_tags($post_global['content']);
+            $id_post = $id;
 
-                //On instancie notre modèle
-                $comment = new CommentsModel;
-                $post = new PostsModel;
+            //On instancie notre modèle
+            $comment = new CommentsModel;
+            $post = new PostsModel;
 
-                //On hydrate
-                $comment->setAuthor($_SESSION['user']['name'])
-                                ->setContent($content)
-                                ->setId_post($id_post);
+            //On hydrate
+            $comment->setAuthor($_SESSION['user']['name'])
+                ->setContent($content)
+                ->setId_post($id_post);
 
-                $comment->create();
-                header('Location: /posts');
+            $comment->create();
+            header('Location: /posts');
 
-            }else{
+        } else {
                 //le formulaire est incomplet
-            }
-            $post = $postsModel->find($id);
-            $comments = $commentsModel->findBy(array('id_post' => $id));
+        }
+        $post = $postsModel->find($id);
+        $comments = $commentsModel->findBy(array('id_post' => $id));
     
-       //On vérifie que l'utilisateur est bien connecté
-         //On crée le formulaire
+        //On vérifie que l'utilisateur est bien connecté
+        //On crée le formulaire
          $form = new Form;
 
          $form->debutForm()
-                 ->ajoutLabelFor('content', 'Ajoutez un commentaire')
-                 ->ajoutTextarea('content','', ['id'=>'content', 'class'=> 'form-control'])
-                 ->ajoutBouton('Ajouter', ['class'=>'btn btn-primary'])
-                 ->finForm();
+            ->ajoutLabelFor('content', 'Ajoutez un commentaire')
+            ->ajoutTextarea('content','', ['id'=>'content', 'class'=> 'form-control'])
+            ->ajoutBouton('Ajouter', ['class'=>'btn btn-primary'])
+            ->finForm();
 
-                 //On enoie à la vue
-                 $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
+        //On enoie à la vue
+        $this->render('posts/single', ['post' => $post, 'comments'=>$comments, 'form' => $form->create()]);
     }
 
     /**
@@ -101,7 +101,7 @@ class PostsController extends Controller
         $globals = new Globals;
         $post_global = $globals->getPOST();
         //On vérifie que le formulaire est complet
-        if(Form::validate($post_global, ['title', 'content'])){
+        if (Form::validate($post_global, ['title', 'content'])) {
             //Le formulaire est complet
             //On se protège contre les failles xss
             //strip_tags, htmlentities, htmlspecialchars
@@ -122,8 +122,8 @@ class PostsController extends Controller
             $post->create();
 
             //On redirige
-            header ('Location: /posts/admin');
-        }else{
+            header('Location: /posts/admin');
+        } else {
             //Le formulaire est incomplet
         }
        $form = new Form;
@@ -148,7 +148,8 @@ class PostsController extends Controller
      * @param integer $id
      * @return void
      */
-    public function modifier(int $id){
+    public function modifier(int $id)
+    {
         $globals = new Globals;
         $post_global = $globals->getPOST();
         //On vérifie si l'annonce existe dans la bdd
@@ -159,13 +160,13 @@ class PostsController extends Controller
         $post = $postModel->find($id);
 
         //Si l'annonce n'existe pas, on retourne à la liste des annonces
-        if(!$post){
+        if (!$post) {
             http_response_code(404);
             header('Location: /admin');
         }
 
         //On traite le formulaire
-        if(Form::validate($post_global, ['title','content'])){
+        if (Form::validate($post_global, ['title','content'])) {
             //On se protège des failles xss
             $title = strip_tags($post_global['title']);
             $content = strip_tags($post_global['content']);
@@ -176,14 +177,14 @@ class PostsController extends Controller
 
             //On hydrate 
             $postModif->setId($post->id)
-                        ->setTitle($title)
-                        ->setContent($content)
-                        ->setSubTitle($subTitle);
+                ->setTitle($title)
+                ->setContent($content)
+                ->setSubTitle($subTitle);
             //On met à jour l'annonce
             $postModif->update();
 
             //On redirige
-            header ('Location: /posts/admin');
+            header('Location: /posts/admin');
         }
 
         $form = new Form;
@@ -202,7 +203,8 @@ class PostsController extends Controller
 
         
     }
-    public function supprimer( int $id){
+    public function supprimer( int $id)
+    {
         //On instancie le model
         $postModel = new PostsModel;
         $post = $postModel->delete($id);
