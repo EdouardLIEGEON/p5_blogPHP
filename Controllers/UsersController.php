@@ -7,7 +7,6 @@ use App\Globals\Globals;
 
 class UsersController extends Controller
 {
-
     /**
      * Connexion des utilisateurs
      *
@@ -27,6 +26,7 @@ class UsersController extends Controller
             //Si l'utilisateur n'existe pas
             if (!$userArray) {
                 //On envoie un message de session
+                $_SESSION['erreur'] = 'Le nom et/ou le mot de passe est incorrect';
                 header('Location: /users/login');
             }
             //L'utilisateur existe
@@ -37,7 +37,13 @@ class UsersController extends Controller
                 //Le mot de passe est bon
                 //On crée la session
                 $user->setSession();
-                header('Location: /');
+                header('Location: /users/success');
+
+            } else {
+
+                $_SESSION['erreur'] = 'Le nom et/ou le mot de passe est incorrect';
+                header('Location: /users/login');          
+                exit;  
             }
         }
 
@@ -52,6 +58,16 @@ class UsersController extends Controller
             ->finForm();
 
         $this->render('users/login', ['loginForm'=> $form->create()]);
+
+    }
+    public function success()
+    {
+        $this->render('users/success');
+
+    }
+    public function success_register()
+    {
+        $this->render('users/success_register');
 
     }
 
@@ -82,9 +98,9 @@ class UsersController extends Controller
             
                     //On stocke l'utilisateur
                     $user->create(); 
+                    header('Location: /users/success_register');
         } else {
 
-            $errorValidateForm = "Veuillez renseigner un Nom et un Mot de passe svp";
         }
         $form = new Form;
 
