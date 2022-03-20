@@ -19,8 +19,8 @@
         <link href="/styles.css" rel="stylesheet" />
     </head>
     <header>
-            <h1>Edouard LIEGEON<br>
-            <img class="img_header"src="/images/logoEd.png" width="100px" height="100px" alt="Logo"><br>
+            <h1>Edouard LIEGEON
+            <img class="img_header"src="/images/logoEd.png" width="100px" height="100px" alt="Logo">
             Développeur PHP / Symfony - Wordpress</h1>
         </header>
         <!-- Navigation-->

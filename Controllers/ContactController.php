@@ -38,7 +38,12 @@ class ContactController extends Controller
             "Message : $message";
                 
             //On envoie le contenu du formulaire sur l'adresse mail
-            $sendMail = mail('edouard.liegeon@gmail.com', 'Message du site p5_blogphp.test', $contact);
+            mail('edouard.liegeon@gmail.com', 'Message du site p5_blogphp.test', $contact);
+            header('Location: contact/success');
         }
+    }
+    public function success()
+    {
+        $this->render('contact/success');
     }
 }

@@ -42,8 +42,8 @@ class UsersController extends Controller
             } else {
 
                 $_SESSION['erreur'] = 'Le nom et/ou le mot de passe est incorrect';
-                header('Location: /users/login');          
-                exit;  
+                header('Location: /users/login');   
+                exit;       
             }
         }
 

@@ -9,7 +9,7 @@
                         <div class="cta-inner bg-faded text-center rounded">
                             <?php if(!empty($_SESSION['erreur'])) : ?>
                                 <div class="alert alert-danger" role="alert">
-                                    <?php echo $_SESSION['erreur']; unset($_SESSION['erreur']); ?>
+                                    <?php print_r( $_SESSION['erreur']); unset($_SESSION['erreur']); ?>
                                 </div>
                             <?php endif; ?> 
                             <div id="box">
