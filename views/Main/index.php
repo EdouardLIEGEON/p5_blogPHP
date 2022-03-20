@@ -2,7 +2,7 @@
             <div class="container">
                 <div class="intro">
                     <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="/images/codePhp.jpg" alt="Screenshot d'un code" />
-                    <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded index">
                         <h2 class="section-heading mb-4">
                             <span class="section-heading-lower">Du commerce au Web</span>
                         </h2>
