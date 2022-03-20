@@ -5,7 +5,7 @@
                 <div class="row">
                 <?php foreach($posts as $post) : ?>
                     <div class="col-md-6 mx-auto ">
-                        <div class="bg-faded rounded p-5 m-auto" style="height: 1000px;">
+                        <div class="bg-faded rounded p-5 m-auto">
                             <h3 class="section-heading mb-0">
                                 <span class="section-heading-upper"><?php print_r($post->title) ?></span>
                             </h3><br>
