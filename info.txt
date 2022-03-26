@@ -1,0 +1,2 @@
+Test Codacy : https://app.codacy.com/gh/EdouardLIEGEON/p5_blogPHP/dashboard
+Gihub : https://github.com/EdouardLIEGEON/p5_blogPHP

@@ -5,10 +5,11 @@
                 <div class="row">
                     <div class="col-xl-9 col-lg-10 mx-auto ">
                         <div class="bg-faded rounded p-5 m-auto">
+                            <h3><?php print_r($post->subTitle) ?></h3><br>
                             <p><?php print_r($post->content) ?></p>
                             <em>Modifié le <?php print_r($post->date) ?></em><br><br>
                             <p>Auteur : <?php print_r($post->author) ?></p>
-                            <h3>Commentaires</h3><br>
+                            <h4>Commentaires</h4><br>
                         <div class=row>
                             <div class="col-md-6">
                             <?php foreach($comments as $comment): ?>

@@ -33,8 +33,17 @@ class PostsController extends Controller
         //On va chercher toutes les annonces
         $posts = $postsModel->findAll();
 
+        //On vérifie que l'utilisateur est bien connecté
+        if(isset($_SESSION['user']) && ($_SESSION['user']['name']==='Admin')){
+
         //On génère la vue
         $this->render('/Posts/admin', compact('posts'));
+
+        //Sinon on renvoie sur la page de login
+        } else {
+
+            header('Location: /users/login');
+        }
 
     }
     /**

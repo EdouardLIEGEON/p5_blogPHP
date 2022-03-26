@@ -33,13 +33,13 @@ class ContactController extends Controller
             $email = strip_tags($post_global['email']);
             $message = strip_tags($post_global['message']);
             $contact = "Ce message est envoyé depuis le site p5_blogPHP.test". "\r\n".
+
             "Nom : $name". "\r\n".
             "Email : $email". "\r\n".
             "Message : $message";
                 
             //On envoie le contenu du formulaire sur l'adresse mail
             mail('edouard.liegeon@gmail.com', 'Message du site p5_blogphp.test', $contact);
-            header('Location: contact/success');
         }
     }
     public function success()
